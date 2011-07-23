@@ -1,0 +1,15 @@
+1. c and c++ language
+
+2. data structure
+
+3. os deadlock
+
+4. sql
+
+5. net
+
+6. my projects
+
+7. ARM
+
+8. A D
