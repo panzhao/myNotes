@@ -17,7 +17,8 @@ int joseph(int peop_num, int kick_num)
     int count = 0; /*用来计算被踢出的人的总数*/
     
     i = 0;
-
+    
+    /*循环踢出人*/
     while (count < peop_num - 1)
     {
         if (store_peop[i] == 0)
@@ -48,7 +49,7 @@ int joseph(int peop_num, int kick_num)
 int main()
 {
     int peop_num = 1000;
-    int kick_num = 5;
+    int kick_num = 15;
 
     joseph(peop_num, kick_num);
 
