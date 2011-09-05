@@ -1,0 +1,10 @@
+[user]
+	name = Mr.Zhao
+	email = zp88_zjl00@163.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	throw =reset --hard HEAD
+	throwh =reset --hard HEAD^
