@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+/*luangai*/
 /*joseph circle*/
 int joseph(int peop_num, int kick_num)
 {
