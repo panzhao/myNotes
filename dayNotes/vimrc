@@ -1,8 +1,36 @@
-set expandtab   "tab扩展成空格
-set tabstop=4   "设置tab键为4个空格
-set number      
-set autoindent
-set showmatch
+"显示行号
+set number
+set nocompatible
+"忽略大小写
+set ignorecase
+"让鼠标工作
 set mouse=a
+"自动缩进
+set autoindent
+"设置字典
 set dictionary=/usr/share/dict/words
+"根据所列出的编码方式匹配需要打开的文件
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1.unicode
+"当前文件的编码方式
+set fileencoding=utf-8
+"当前缓冲区的编码方式
+set encoding=utf-8
+set showmatch
+set tabstop=4
+set expandtab
+
+"ctags
+set tags=./tags,./../tags,./*/tags
+nmap<F8> :Tlist <CR>
+nmap<F9> :cscope find 
+"暂时用方便，做其他项目时候需删除
+nmap<F12> :TlistAddFilesRecursive ./src <CR>
+nmap<F5>  :wq! <CR>
+"按<F7>保存内容
+imap<F7>  <Esc> :w <CR>
+"ctags
+"cscope
+cscope add ./cscope.out
+"cscope
+
 syntax on
