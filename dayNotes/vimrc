@@ -2,7 +2,7 @@
 set number
 set nocompatible
 "忽略大小写
-set ignorecase
+set ignorecase smartcase
 "让鼠标工作
 set mouse=a
 "自动缩进
@@ -16,16 +16,26 @@ set fileencoding=utf-8
 "当前缓冲区的编码方式
 set encoding=utf-8
 set showmatch
+"设置tab
 set tabstop=4
 set expandtab
+set softtabstop=4
+set shiftwidth=4
+
+"taglist
+let Tlist_File_Fold_Auto_Close=1
 
 "ctags
 set tags=./tags,./../tags,./*/tags
 nmap<F8> :Tlist <CR>
 nmap<F9> :cscope find 
+
 "暂时用方便，做其他项目时候需删除
 nmap<F12> :TlistAddFilesRecursive ./src <CR>
-nmap<F5>  :wq! <CR>
+
+"插入模式下按下F5保存并退出
+imap<F5>  <Esc> :wq! <CR>
+
 "按<F7>保存内容
 imap<F7>  <Esc> :w <CR>
 "ctags
