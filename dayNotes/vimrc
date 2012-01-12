@@ -19,7 +19,7 @@ set showmatch
 "设置tab
 set tabstop=4
 set expandtab
-set softtabstop=4
+"set softtabstop=4
 set shiftwidth=4
 
 "taglist
