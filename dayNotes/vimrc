@@ -1,43 +1,61 @@
 "显示行号
 set number
+
+"设置可粘贴
+"set paste
+
 set nocompatible
 "忽略大小写
+
 set ignorecase smartcase
 "让鼠标工作
 set mouse=a
+
 "自动缩进
 set autoindent
+
 "设置字典
 set dictionary=/usr/share/dict/words
+
 "根据所列出的编码方式匹配需要打开的文件
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1.unicode
+
 "当前文件的编码方式
 set fileencoding=utf-8
+
 "当前缓冲区的编码方式
 set encoding=utf-8
 set showmatch
+
 "设置tab
 set tabstop=4
 set expandtab
+
 "set softtabstop=4
 set shiftwidth=4
 
-"taglist
+"在taglist中只打开当前文件的标签
 let Tlist_File_Fold_Auto_Close=1
 
-"ctags
-set tags=./tags,./../tags,./*/tags
+""""""""""""""""""""
+"ctags and easytags
+""""""""""""""""""""
+set tags=./tags;            
+let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.vim/tags'
+let g:easytags_always_enabled = 1
+
 nmap<F8> :Tlist <CR>
 nmap<F9> :cscope find 
 
-"暂时用方便，做其他项目时候需删除
-nmap<F12> :TlistAddFilesRecursive ./src <CR>
+"暂时用方便
+nmap<F12> :TlistAddFilesRecursive 
 
 "插入模式下按下F5保存并退出
 imap<F5>  <Esc> :wq! <CR>
 
 "按<F7>保存内容
-imap<F7>  <Esc> :w <CR>
+nmap<F7>  :w <CR>
 "ctags
 "cscope
 cscope add ./cscope.out
