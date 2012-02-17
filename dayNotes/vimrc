@@ -40,7 +40,10 @@ let Tlist_File_Fold_Auto_Close=1
 """"""""""""""""""""
 "ctags and easytags
 """"""""""""""""""""
-set tags=./tags;            
+if has("tags")
+    set tags=./tags;
+endif
+
 let g:easytags_dynamic_files = 1
 let g:easytags_file = '~/.vim/tags'
 let g:easytags_always_enabled = 1
@@ -49,7 +52,7 @@ nmap<F8> :Tlist <CR>
 nmap<F9> :cscope find 
 
 "暂时用方便
-nmap<F12> :TlistAddFilesRecursive 
+nmap<F12> :TlistAddFiles 
 
 "插入模式下按下F5保存并退出
 imap<F5>  <Esc> :wq! <CR>
@@ -58,7 +61,9 @@ imap<F5>  <Esc> :wq! <CR>
 nmap<F7>  :w <CR>
 "ctags
 "cscope
-cscope add ./cscope.out
+if has("cscope.out")
+    cscope add ./cscope.out
+endif
 "cscope
 
 syntax on
