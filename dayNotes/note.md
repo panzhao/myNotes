@@ -9,4 +9,8 @@
                 :cat /etc/issue
 ###linux开机显示频率超出限制
    修改/boot/grub/grub.cfg中set gfxmode=auto改为set gfxmode=‘自己设置分辨率’ 
+
+###用户组
+    查看用户所在组:    groups [用户名]
+      查看用户信息:        id [用户名]
     
