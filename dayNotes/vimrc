@@ -43,9 +43,9 @@ let Tlist_File_Fold_Auto_Close=1
 if has("tags")
     set tags=./tags
 endif
-let g:easytags_dynamic_files = 1
-let g:easytags_file = './tags'
-let g:easytags_always_enabled = 1
+"let g:easytags_dynamic_files = 1
+"let g:easytags_file = './tags'
+"let g:easytags_always_enabled = 1
 
 map<F8> :Tlist <CR>
 nmap<F9> :cscope find 
