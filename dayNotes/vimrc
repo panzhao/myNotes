@@ -27,6 +27,7 @@ set fileencoding=utf-8
 set encoding=utf-8
 set showmatch
 
+nmap <Tab> <C-W>w 
 "设置tab
 set tabstop=4
 set expandtab
