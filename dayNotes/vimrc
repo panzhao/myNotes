@@ -1,18 +1,17 @@
 "显示行号
 set number
-
+"set t_Co=256
+colorschem default 
 "设置可粘贴
 "set paste
-
 set nocompatible
 "忽略大小写
-
 set ignorecase smartcase
 "让鼠标工作
 set mouse=a
-
 "自动缩进
 set autoindent
+set hls
 
 "设置字典
 set dictionary=/usr/share/dict/words
@@ -27,7 +26,7 @@ set fileencoding=utf-8
 set encoding=utf-8
 set showmatch
 
-nmap <Tab> <C-W>w 
+
 "设置tab
 set tabstop=4
 set expandtab
@@ -42,23 +41,27 @@ let Tlist_File_Fold_Auto_Close=1
 "ctags and easytags
 """"""""""""""""""""
 if has("tags")
-    set tags=./tags
+    set tags=./tags,~/extract/tags
 endif
-"let g:easytags_dynamic_files = 1
-"let g:easytags_file = './tags'
-"let g:easytags_always_enabled = 1
 
 map<F8> :Tlist <CR>
 nmap<F9> :cscope find 
-
-"暂时用方便
+nmap<F4> :bel 20vsp gdb-varibles <CR>
+map<F3> :run macros/gdb_mappings.vim <CR>
 nmap<F12> :TlistAddFiles 
 
+nmap <Tab> <C-W>w 
+"关于quichfix
+map<space><F5> :vimgrep 
+map<space><F3> :cn <CR>
+map<space><F4> :cp <CR>
+map<space><F2> :cw <CR>
+map<space><F6> yw :vimgrep <c-r>" * <CR> <cr> :cw <CR>
+"暂时用方便
+
+
 "插入模式下按下F5保存并退出
-imap ,.  <Esc> :wq <CR>
-imap .,  <Esc> :w <CR>
-nmap ,,  :w <CR>
-nmap ..  :wq <CR>
+imap jj  <Esc>
 
 "cscope
 if has("cscope.out")
