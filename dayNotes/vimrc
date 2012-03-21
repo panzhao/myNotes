@@ -52,11 +52,12 @@ nmap<F12> :TlistAddFiles
 
 nmap <Tab> <C-W>w 
 "关于quichfix
-map<space><F5> :vimgrep 
 map<space><F3> :cn <CR>
 map<space><F4> :cp <CR>
 map<space><F2> :cw <CR>
 map<space><F6> yw :vimgrep <c-r>" * <CR> <cr> :cw <CR>
+map<F5> :make <CR> :cw <CR> :cc <cr>
+imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "暂时用方便
 
 
