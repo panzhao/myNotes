@@ -8,7 +8,7 @@ set nocompatible
 "忽略大小写
 set ignorecase smartcase
 "让鼠标工作
-set mouse=a
+"set mouse=a
 "自动缩进
 set autoindent
 set hls
@@ -45,12 +45,11 @@ if has("tags")
 endif
 
 map<F8> :Tlist <CR>
-nmap<F9> :cscope find 
 nmap<F4> :bel 20vsp gdb-varibles <CR>
 map<F3> :run macros/gdb_mappings.vim <CR>
 nmap<F12> :TlistAddFiles 
-
-nmap <Tab> <C-W>w 
+map<F6> :q <CR>
+nmap <F9> <C-W>w 
 "关于quichfix
 map<space><F3> :cn <CR>
 map<space><F4> :cp <CR>
