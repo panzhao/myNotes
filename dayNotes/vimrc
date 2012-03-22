@@ -57,7 +57,7 @@ map<F5> :make <CR> :cw <CR> :cc <cr>
 imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<F6> :q <CR>
-imap<F6> :wq<CR>
+imap<F6> <Esc> :wq<CR>
 
 "打开list
 map<F8> :Tlist <CR>
