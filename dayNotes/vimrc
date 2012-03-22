@@ -44,23 +44,31 @@ if has("tags")
     set tags=./tags,../tags,../**/tags
 endif
 
-map<F8> :Tlist <CR>
-nmap<F4> :bel 20vsp gdb-varibles <CR>
+"""""""""对f*的映射"""""""""""
+"窗口切换
+map<F2> <C-W>w 
+"加载vimgdb映射键
 map<F3> :run macros/gdb_mappings.vim <CR>
-nmap<F12> :TlistAddFiles *.cpp *.h *.c
+"打开vimgdb变量窗口
+map<F4> :bel 20vsp gdb-varibles <CR>
+"编译当前程序
+map<F5> :make <CR> :cw <CR> :cc <cr>
+"插入模式下的编译
+imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
+"一般模式下的退出
 map<F6> :q <CR>
-nmap<F2> <C-W>w 
+imap<F6> :wq<CR>
+
+"打开list
+map<F8> :Tlist <CR>
+"在tlist中加入文件
+map<F12> :TlistAddFiles *.cpp *.h *.c
 "关于quichfix
 map<space><F3> :cn <CR>
 map<space><F4> :cp <CR>
-"map<space><F6> b yw :vimgrep <c-r>" * <CR> <cr> :cw <CR>
 map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> *<CR> :cw <CR>
-map<F5> :make <CR> :cw <CR> :cc <cr>
-imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
-"暂时用方便
+""""""""对f*的映射""""""""""
 
-
-"插入模式下按下F5保存并退出
 imap jj  <Esc>
 
 "cscope
