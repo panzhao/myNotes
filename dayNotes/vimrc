@@ -8,11 +8,12 @@ set nocompatible
 "忽略大小写
 set ignorecase smartcase
 "让鼠标工作
-"set mouse=a
+set mouse=a
 "自动缩进
 set autoindent
 set hls
-
+"设置cstag代替tag
+set cst
 "设置字典
 set dictionary=/usr/share/dict/words
 
@@ -25,7 +26,6 @@ set fileencoding=utf-8
 "当前缓冲区的编码方式
 set encoding=utf-8
 set showmatch
-
 
 "设置tab
 set tabstop=4
@@ -41,20 +41,20 @@ let Tlist_File_Fold_Auto_Close=1
 "ctags and easytags
 """"""""""""""""""""
 if has("tags")
-    set tags=./tags,~/extract/tags
+    set tags=./tags,../tags,../**/tags
 endif
 
 map<F8> :Tlist <CR>
 nmap<F4> :bel 20vsp gdb-varibles <CR>
 map<F3> :run macros/gdb_mappings.vim <CR>
-nmap<F12> :TlistAddFiles 
+nmap<F12> :TlistAddFiles *.cpp *.h *.c
 map<F6> :q <CR>
-nmap <F9> <C-W>w 
+nmap<F2> <C-W>w 
 "关于quichfix
 map<space><F3> :cn <CR>
 map<space><F4> :cp <CR>
-map<space><F2> :cw <CR>
-map<space><F6> yw :vimgrep <c-r>" * <CR> <cr> :cw <CR>
+"map<space><F6> b yw :vimgrep <c-r>" * <CR> <cr> :cw <CR>
+map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> *<CR> :cw <CR>
 map<F5> :make <CR> :cw <CR> :cc <cr>
 imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "暂时用方便
