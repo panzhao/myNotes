@@ -9,6 +9,8 @@ set nocompatible
 set ignorecase smartcase
 "让鼠标工作
 set mouse=a
+"设置当前文件的目录为工作目录
+set autochdir
 "自动缩进
 set autoindent
 set hls
@@ -18,7 +20,7 @@ set cst
 set dictionary=/usr/share/dict/words
 
 "根据所列出的编码方式匹配需要打开的文件
-set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1.unicode
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1,unicode
 
 "当前文件的编码方式
 set fileencoding=utf-8
@@ -40,9 +42,9 @@ let Tlist_File_Fold_Auto_Close=1
 """"""""""""""""""""
 "ctags and easytags
 """"""""""""""""""""
-if has("tags")
-    set tags=./tags,../tags,../**/tags
-endif
+"if has("tags")
+set tags=./tags,../tags
+"endif
 
 """""""""对f*的映射"""""""""""
 "窗口切换
@@ -52,21 +54,23 @@ map<F3> :run macros/gdb_mappings.vim <CR>
 "打开vimgdb变量窗口
 map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
-map<F5> :make <CR> :cw <CR> :cc <cr>
+map<F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "插入模式下的编译
 imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<F6> :q <CR>
-imap<F6> <Esc> :wq<CR>
-
+imap<F6> <Esc> :wq <CR>
+cmap<F2> set tags=
+cmap<F3> vimgrep 
+cmap<F4> set mouse=
 "打开list
 map<F8> :Tlist <CR>
 "在tlist中加入文件
 map<F12> :TlistAddFiles *.cpp *.h *.c
 "关于quichfix
-map<space><F3> :cn <CR>
-map<space><F4> :cp <CR>
-map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> *<CR> :cw <CR>
+map cn :cn <CR>
+map cp :cp <CR>
+map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw <CR>
 """"""""对f*的映射""""""""""
 
 imap jj  <Esc>
