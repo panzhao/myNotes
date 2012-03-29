@@ -532,3 +532,11 @@ VIM的使用技巧
 
     还有一篇是滇狐（水木上的一个牛人）写的关于vim的插件：
     http://learn.tsinghua.edu.cn:8080/2005212716/html/vimplugins.html
+###vim自动补全插件
+    OmniCppComplete可自动不全类的成员
+    1.ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+    2.参数解释:
+        --c++-kinds=+p  : 为C++文件增加函数原型的标签
+        --fields=+iaS   : 在标签文件中加入继承信息(i)、类成员的访问控制信息(a)、
+                          以及函数的指纹(S)
+        --extra=+q      : 为标签增加类修饰符。注意，如果没有此选项，将不能对类成员补全 

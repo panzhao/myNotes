@@ -6,15 +6,20 @@ colorschem default
 set backspace=indent,eol,start
 "设置可粘贴
 "set paste
+
 "忽略大小写
 set ignorecase smartcase
+
 "让鼠标工作
 set mouse=a
+
 "设置当前文件的目录为工作目录
 set autochdir
+
 "自动缩进
 set autoindent
 set hls
+
 "设置cstag代替tag
 set cst
 "设置字典
@@ -33,7 +38,7 @@ set showmatch
 "设置tab
 set tabstop=4
 set expandtab
-
+map<tab> :bnext <cr>
 "set softtabstop=4
 set shiftwidth=4
 
@@ -43,11 +48,10 @@ let Tlist_File_Fold_Auto_Close=1
 """"""""""""""""""""
 "ctags and easytags
 """"""""""""""""""""
-"if has("tags")
 set tags=./tags,../tags
-"endif
 
 """""""""对f*的映射"""""""""""
+let mapleader=";"
 "窗口切换
 map<F2> <C-W>w 
 "加载vimgdb映射键
@@ -55,9 +59,9 @@ map<F3> :run macros/gdb_mappings.vim <CR>
 "打开vimgdb变量窗口
 map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
-map<F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
+autocmd FileType c,cpp,h map<silent> <F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "插入模式下的编译
-imap<F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
+autocmd FileType c,cpp,h imap<silent> <F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<F6> :q <CR>
 imap<F6> <Esc> :wq <CR>
@@ -72,14 +76,49 @@ map<F12> :TlistAddFiles *.cpp *.h *.c
 map cn :cn <CR>
 map cp :cp <CR>
 map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw <CR>
-""""""""对f*的映射""""""""""
 
+""""""""""""""""""""""""""""""
+" netrw setting
+""""""""""""""""""""""""""""""
+"let g:netrw_winsize = 30
+nmap <silent> <leader>fe :Explore<cr> 
+
+""""""""对f*的映射""""""""""
 imap jj  <Esc>
 
 "cscope
-if has("cscope.out")
-    cscope add ./cscope.out
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=1
+    set cst
+    set nocsverb     
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+        cs add ../cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
 endif
-"cscope
+"end cscope
 
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+ 
+"打开文件时自动跳转到上次编辑的位置
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+"cscope
+filetype plugin indent on
 syntax on
