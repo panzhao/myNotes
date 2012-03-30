@@ -7,6 +7,9 @@ set backspace=indent,eol,start
 "设置可粘贴
 "set paste
 
+"打开文件检测
+filetype plugin indent on
+
 "忽略大小写
 set ignorecase smartcase
 
@@ -71,11 +74,13 @@ cmap<F4> set mouse=
 "打开list
 map<F8> :Tlist <CR>
 "在tlist中加入文件
-map<F12> :TlistAddFiles *.cpp *.h *.c
+map<F12> :TlistAddFiles *.[ch]*
 "关于quichfix
-map cn :cn <CR>
-map cp :cp <CR>
-map<space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw <CR>
+map <silent><leader><space> :cw<cr>
+map <silent><leader>n :cn <CR>
+map <silent><leader>p :cp <CR>
+map <silent><leader>q :cclose<CR>
+map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw <CR>
 
 """"""""""""""""""""""""""""""
 " netrw setting
@@ -118,7 +123,5 @@ autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-
-"cscope
-filetype plugin indent on
+"打开语法高亮
 syntax on
