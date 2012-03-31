@@ -16,9 +16,6 @@ set ignorecase smartcase
 "让鼠标工作
 set mouse=a
 
-"设置当前文件的目录为工作目录
-set autochdir
-
 "自动缩进
 set autoindent
 set hls
@@ -41,7 +38,11 @@ set showmatch
 "设置tab
 set tabstop=4
 set expandtab
-map<tab> :bnext <cr>
+
+"定义<leaders>为;
+let mapleader=";"
+nmap <silent><leader><tab> :bnext<cr>
+nmap <silent><space><tab>  :bprevious<cr>
 "set softtabstop=4
 set shiftwidth=4
 
@@ -52,9 +53,12 @@ let Tlist_File_Fold_Auto_Close=1
 "ctags and easytags
 """"""""""""""""""""
 set tags=./tags,../tags
-
+"生成tags文件
+cmap<leader>t !ctags -R `pwd` <cr>
+"生成cscope索引文件
+cmap<leader>s  !cscope -Rbqk -i cscope.files <cr>
 """""""""对f*的映射"""""""""""
-let mapleader=";"
+
 "窗口切换
 map<F2> <C-W>w 
 "加载vimgdb映射键
@@ -123,10 +127,28 @@ autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-"打开语法高亮
-syntax on
-"设置智能补全时候不打开预览窗口
-"set completeopt=longest,menu 
-"对lookUpfile的使用
-let g:LookupFile_TagExpr='"./filenametags"'
-cmap<leader>lk let g:LookupFile_TagExpr='"./filenametags"'
+
+syntax on "打开语法高亮 
+
+"set completeopt=longest,menu "设置智能补全时候不打开预览窗口
+
+"""""""""""""""""""""""""""""""""""""""
+"LookUpFile
+"""""""""""""""""""""""""""""""""""""""
+let g:LookupFile_TagExpr='"./filenametags"'     "对lookUpfile的使用
+
+"设置lookupfile路径
+nmap<silent><leader>k :let g:LookupFile_TagExpr='"../filenametags"'  
+nmap<silent> <leader>lk :LUTags<cr>
+"设置查找缓冲
+nmap<silent> <leader>lb :LUBufs<cr>
+"映射LUWalk为,lw
+nmap<silent> <leader>lw :LUWalk<cr>
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+
+"设置当前文件的目录为工作目录
+set autochdir
