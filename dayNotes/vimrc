@@ -70,8 +70,8 @@ autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc
 "插入模式下的编译
 autocmd FileType c,cpp,h imap<silent><leader><F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
-map<F6> :q <CR>
-imap<F6> <Esc> :wq <CR>
+map<silent><F6> :q <CR>
+imap<silent><F6> <Esc> :wq <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep 
 cmap<F4> set mouse=
