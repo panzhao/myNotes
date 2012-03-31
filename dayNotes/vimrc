@@ -62,9 +62,9 @@ map<F3> :run macros/gdb_mappings.vim <CR>
 "打开vimgdb变量窗口
 map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
-autocmd FileType c,cpp,h map<silent> <F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
+autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "插入模式下的编译
-autocmd FileType c,cpp,h imap<silent> <F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
+autocmd FileType c,cpp,h imap<silent><leader><F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<F6> :q <CR>
 imap<F6> <Esc> :wq <CR>
@@ -125,3 +125,8 @@ autocmd BufReadPost *
     \ endif
 "打开语法高亮
 syntax on
+"设置智能补全时候不打开预览窗口
+"set completeopt=longest,menu 
+"对lookUpfile的使用
+let g:LookupFile_TagExpr='"./filenametags"'
+cmap<leader>lk let g:LookupFile_TagExpr='"./filenametags"'
