@@ -139,6 +139,11 @@ syntax on "打开语法高亮
 let g:LookupFile_TagExpr='"./filenametags"'     "对lookUpfile的使用
 
 "设置lookupfile路径
+if has("filenametags")
+    let g:LookupFile_TagExpr='"./filenametags"'
+else
+    let g:LookupFile_TagExpr='"../filenametags"'
+endif
 nmap<silent><leader>k :let g:LookupFile_TagExpr='"../filenametags"'
 nmap<silent> <leader>lk :LUTags<cr>
 "设置查找缓冲
