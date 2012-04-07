@@ -95,6 +95,8 @@ nmap <silent> <leader>fe :Explore<cr>
 """"""""对f*的映射""""""""""
 imap jj  <Esc>
 
+"我的习惯一般上层都有cscope.out
+cs add ../cscope.out
 "cscope
 if has("cscope")
     set csprg=/usr/bin/cscope
@@ -104,7 +106,6 @@ if has("cscope")
     " add any database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
-        cs add ../cscope.out
     " else add database pointed to by environment
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
@@ -135,10 +136,9 @@ syntax on "打开语法高亮
 """""""""""""""""""""""""""""""""""""""
 "LookUpFile
 """""""""""""""""""""""""""""""""""""""
-let g:LookupFile_TagExpr='"./filenametags"'     "对lookUpfile的使用
+let g:LookupFile_TagExpr='"../filenametags"'     "对lookUpfile的使用
 
-"设置lookupfile路径
-nmap<silent><leader>k :let g:LookupFile_TagExpr='"../filenametags"'
+nmap<leader>k :let g:LookupFile_TagExpr='"./filenametags"'
 nmap<silent> <leader>lk :LUTags<cr>
 "设置查找缓冲
 nmap<silent> <leader>lb :LUBufs<cr>
