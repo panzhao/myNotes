@@ -2,7 +2,7 @@
 set nocompatible
 set number
 "set t_Co=256
-colorschem default 
+colorschem default
 set backspace=indent,eol,start
 "设置可粘贴
 "set paste
@@ -73,7 +73,7 @@ autocmd FileType c,cpp,h imap<silent><leader><F5> <Esc> :w <CR> :make <CR> :cw <
 map<silent><F6> :q <CR>
 imap<silent><F6> <Esc> :wq <CR>
 cmap<F2> set tags=
-cmap<F3> vimgrep 
+cmap<F3> vimgrep
 cmap<F4> set mouse=
 "打开list
 map<F8> :Tlist <CR>
@@ -90,7 +90,7 @@ map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw
 " netrw setting
 """"""""""""""""""""""""""""""
 "let g:netrw_winsize = 30
-nmap <silent> <leader>fe :Explore<cr> 
+nmap <silent> <leader>fe :Explore<cr>
 
 """"""""对f*的映射""""""""""
 imap jj  <Esc>
@@ -102,7 +102,7 @@ if has("cscope")
     set csprg=/usr/bin/cscope
     set csto=1
     set cst
-    set nocsverb     
+    set nocsverb
     " add any database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
@@ -122,14 +122,14 @@ nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
- 
+
 "打开文件时自动跳转到上次编辑的位置
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
 
-syntax on "打开语法高亮 
+syntax on "打开语法高亮
 
 "set completeopt=longest,menu "设置智能补全时候不打开预览窗口
 
@@ -163,14 +163,20 @@ let g:bufExplorerSplitRight=0        " Split left.
 let g:bufExplorerSplitVertical=1     " Split vertically.
 let g:bufExplorerSplitVertSize = 30  " Split width
 let g:bufExplorerUseCurrentWindow=1  " Open in new window.
-autocmd BufWinEnter \[Buf\ List\] setl nonumber 
+autocmd BufWinEnter \[Buf\ List\] setl nonumber
 
 """"""""""""""""""""""""""""""
 " winManager setting
 """""""""""""""""""""""""""""""
 let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
-let g:winManagerWidth = 30
+    let g:winManagerWidth = 30
 let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
 nmap <C-W><C-B> :BottomExplorerWindow<cr>
-nmap <silent><F9> :WMToggle<cr> 
+nmap <silent><F9> :WMToggle<cr>
+
+"auto display the result of search
+set is
+
+"set the history of cmd in vim
+set history=100
