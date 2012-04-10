@@ -60,7 +60,7 @@ cmap<leader>s  !cscope -Rbqk -i cscope.files <cr>
 """""""""对f*的映射"""""""""""
 
 "窗口切换
-map<F2> <C-W>w 
+map<F2> <C-W>w
 "加载vimgdb映射键
 map<F3> :run macros/gdb_mappings.vim <CR>
 "打开vimgdb变量窗口
