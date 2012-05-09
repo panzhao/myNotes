@@ -67,8 +67,6 @@ map<F3> :run macros/gdb_mappings.vim <CR>
 map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
 autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
-"插入模式下的编译
-autocmd FileType c,cpp,h imap<silent><leader><F5> <Esc> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<silent><F6> :q <CR>
 imap<silent><F6> <Esc> :wq <CR>
@@ -101,7 +99,6 @@ cs add ../cscope.out
 if has("cscope")
     set csprg=/usr/bin/cscope
     set csto=1
-    set cst
     set nocsverb
     " add any database in current directory
     if filereadable("cscope.out")
@@ -154,7 +151,7 @@ let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文�
 set autochdir
 
 """"""""""""""""""""""""""""""
-" BufExplorer
+"BufExplorer setting
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
@@ -180,3 +177,13 @@ set is
 
 "set the history of cmd in vim
 set history=100
+
+"设置自动换行
+autocmd FileType c,cpp,cc,h set textwidth=80
+au BufRead,BufNewFile * setfiletype txt 
+
+"设置自动补全时候没有预览窗口
+set completeopt=menu
+
+"In order to use textbrowser.
+au BufEnter *.txt setlocal ft=txt
