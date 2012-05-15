@@ -64,7 +64,7 @@ map<F2> <C-W>w
 "加载vimgdb映射键
 map<F3> :run macros/gdb_mappings.vim <CR>
 "打开vimgdb变量窗口
-map<F4> :bel 20vsp gdb-varibles <CR>
+"map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
 autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
@@ -72,7 +72,7 @@ map<silent><F6> :q <CR>
 imap<silent><F6> <Esc> :wq <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep
-cmap<F4> set mouse=
+nmap<F4> :set mouse= 
 "打开list
 map<F8> :Tlist <CR>
 "在tlist中加入文件
