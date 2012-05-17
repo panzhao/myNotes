@@ -82,6 +82,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+#更改gdb的启动配置信息
 alias gdb='gdb -x ~/.gdbcfg'
 alias vi='vim'
 
