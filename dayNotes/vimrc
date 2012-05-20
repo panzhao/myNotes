@@ -8,7 +8,7 @@ set backspace=indent,eol,start
 "set paste
 
 "打开文件检测
-filetype plugin indent on
+filetype plugin on
 
 "忽略大小写
 set ignorecase smartcase
