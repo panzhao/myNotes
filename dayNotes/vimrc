@@ -72,7 +72,7 @@ map<silent><F6> :q <CR>
 imap<silent><F6> <Esc> :wq <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep
-nmap<F4> :set mouse= 
+nmap<F4> :set mouse=
 "打开list
 map<F8> :Tlist <CR>
 "在tlist中加入文件
