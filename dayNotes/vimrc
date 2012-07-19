@@ -39,6 +39,9 @@ set showmatch
 set tabstop=4
 set expandtab
 
+"always show current position
+set ruler
+
 "定义<leaders>为;
 let mapleader=";"
 nmap <silent><leader><tab> :bnext<cr>
@@ -48,6 +51,7 @@ set shiftwidth=4
 
 "在taglist中只打开当前文件的标签
 let Tlist_File_Fold_Auto_Close=1
+let Tlist_Exit_OnlyWindow=1
 
 """"""""""""""""""""
 "ctags and easytags
@@ -56,7 +60,7 @@ set tags=./tags,../tags
 "生成tags文件
 cmap<leader>t !ctags -R `pwd` <cr>
 "生成cscope索引文件
-cmap<leader>s  !cscope -Rbqk -i cscope.files <cr>
+cmap<leader>s  !cscope -bqk -i cscope.files <cr>
 """""""""对f*的映射"""""""""""
 
 "窗口切换
@@ -133,9 +137,9 @@ syntax on "打开语法高亮
 """""""""""""""""""""""""""""""""""""""
 "LookUpFile
 """""""""""""""""""""""""""""""""""""""
-let g:LookupFile_TagExpr='"../filenametags"'     "对lookUpfile的使用
+let g:LookupFile_TagExpr='"./filenametags"'     "对lookUpfile的使用
 
-nmap<leader>k :let g:LookupFile_TagExpr='"./filenametags"'
+nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
 nmap<silent> <leader>lk :LUTags<cr>
 "设置查找缓冲
 nmap<silent> <leader>lb :LUBufs<cr>
@@ -179,7 +183,7 @@ set is
 set history=100
 
 "设置自动换行
-autocmd FileType c,cpp,cc,h set textwidth=80
+autocmd FileType c,cpp,cc,h set textwidth=100
 au BufRead,BufNewFile * setfiletype txt 
 
 "设置自动补全时候没有预览窗口
