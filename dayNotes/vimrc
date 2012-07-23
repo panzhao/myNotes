@@ -4,7 +4,7 @@ set number
 "set t_Co=256
 colorschem default
 set backspace=indent,eol,start
-"设置可粘贴
+"设置可粘贴 与snippets有冲突
 "set paste
 
 "打开文件检测
@@ -14,7 +14,7 @@ filetype plugin on
 set ignorecase smartcase
 
 "让鼠标工作
-set mouse=a
+"set mouse=a
 
 "自动缩进
 set autoindent
@@ -33,12 +33,11 @@ set fileencoding=utf-8
 
 "当前缓冲区的编码方式
 set encoding=utf-8
-set showmatch
 
 "设置tab
 set tabstop=4
 set expandtab
-
+set showmatch
 "always show current position
 set ruler
 
@@ -46,23 +45,62 @@ set ruler
 let mapleader=";"
 nmap <silent><leader><tab> :bnext<cr>
 nmap <silent><space><tab>  :bprevious<cr>
+
 "set softtabstop=4
 set shiftwidth=4
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"插件设置
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""
 "在taglist中只打开当前文件的标签
+"""""""""""""""""""""""""""""""""
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_OnlyWindow=1
 
 """"""""""""""""""""
-"ctags and easytags
+"ctags 
 """"""""""""""""""""
 set tags=./tags,../tags
 "生成tags文件
 cmap<leader>t !ctags -R `pwd` <cr>
 "生成cscope索引文件
 cmap<leader>s  !cscope -bqk -i cscope.files <cr>
-"""""""""对f*的映射"""""""""""
 
+"""""""""""""""""""""""""""""""""""""""
+"LookUpFile
+"""""""""""""""""""""""""""""""""""""""
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+"let g:LookupFile_UsingSpecializedTags = 1      "使文件显示在前
+let g:LookupFile_Bufs_LikeBufCmd = 0
+let g:LookupFile_ignorecase = 1
+let g:LookupFile_smartcase = 1
+
+if filereadable("./filenametags")
+   let g:LookupFile_TagExpr = '"./filenametags"'
+endif
+
+nmap <silent> <leader>lk :LUTags<cr>
+nmap <silent> <leader>ll :LUBufs<cr>
+nmap <silent> <leader>lw :LUWalk<cr>
+nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"插件设置结束
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""对f*的映射"""""""""""
 "窗口切换
 map<F2> <C-W>w
 "加载vimgdb映射键
@@ -77,6 +115,7 @@ imap<silent><F6> <Esc> :wq <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep
 nmap<F4> :set mouse=
+nmap<silent><leader>m :A<cr>
 "打开list
 map<F8> :Tlist <CR>
 "在tlist中加入文件
@@ -97,9 +136,10 @@ nmap <silent> <leader>fe :Explore<cr>
 """"""""对f*的映射""""""""""
 imap jj  <Esc>
 
-"我的习惯一般上层都有cscope.out
-cs add ../cscope.out
+"""""""""""""""""""""""""""""""""
+"
 "cscope
+"""""""""""""""""""""""""""""""""
 if has("cscope")
     set csprg=/usr/bin/cscope
     set csto=1
@@ -124,7 +164,10 @@ nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+""""""""""""""""""""""""""""""""""
+"
 "打开文件时自动跳转到上次编辑的位置
+""""""""""""""""""""""""""""""""""
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
@@ -134,27 +177,12 @@ syntax on "打开语法高亮
 
 "set completeopt=longest,menu "设置智能补全时候不打开预览窗口
 
-"""""""""""""""""""""""""""""""""""""""
-"LookUpFile
-"""""""""""""""""""""""""""""""""""""""
-let g:LookupFile_TagExpr='"./filenametags"'     "对lookUpfile的使用
-
-nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
-nmap<silent> <leader>lk :LUTags<cr>
-"设置查找缓冲
-nmap<silent> <leader>lb :LUBufs<cr>
-"映射LUWalk为,lw
-nmap<silent> <leader>lw :LUWalk<cr>
-let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
-let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
-let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
-let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
-let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
 
 "设置当前文件的目录为工作目录
 set autochdir
 
 """"""""""""""""""""""""""""""
+"
 "BufExplorer setting
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
