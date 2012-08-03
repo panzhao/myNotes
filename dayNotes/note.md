@@ -13,4 +13,7 @@
 ###用户组
     查看用户所在组:    groups [用户名]
       查看用户信息:        id [用户名]
-    
+
+###Linux安装Flash插件
+    1. 下载flash插件 http://get.adobe.com/flashplayer/completion/?installer=Flash_Player_11.2_for_other_Linux_(.tar.gz)_32-bit
+    2. 安装：sudo cp libflashplayer.so /usr/lib/mozilla/plugins/
