@@ -68,7 +68,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -l --color=auto'
+    alias ls='ls --color=auto'
     #alias lv='ls -l --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
@@ -79,12 +79,21 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
 #更改gdb的启动配置信息
 alias gdb='gdb -x ~/.gdbcfg'
 alias vi='vim'
+alias cddomparser='cd /home/lost+found/server/code/dom_parser_r60920'
+alias cdtest='cd /home/lost+found/test'
+alias cdwebkit='cd /home/lost+found/webkit_403'
+alias cdworkspace='cd /home/lost+found/'
+alias cdnotes='cd /home/lost+found/myNotes/bash_scripts'
+alias cd1='cd ../'
+alias cd2='cd ../../'
+alias cd3='cd ../../../'
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -101,3 +110,12 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+JAVA_HOME=/home/lost+found/android_develop/jdk1.6.0_31/
+export CLASSPATH=$JAVA_HOME/lib
+export PATH=${PATH}:$JAVA_HOME/bin
+
+export PATH=/usr/local/php5/bin/:/home/lost+found/android_develop/android-sdk-linux/platform-tools:/home/lost+found/android_develop/eclipse:$PATH
+export USE_CCACHE=1
+export CCACHE_DIR=/home/lost+found/ccache
+export PATH=/home/zhaopan/myNotes-master/dayNotes:$PATH
