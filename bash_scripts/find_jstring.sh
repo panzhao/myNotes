@@ -1,2 +1,2 @@
 #!/bin/bash
-find ./ -name "*.java" | xargs grep $1
+find ./ -name "*.java" | xargs grep $1 -n
