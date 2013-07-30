@@ -8,7 +8,7 @@ echo -e "!_TAG_FILE_SORTED\t2\t/2=foldcase/" > filenametags
 #sort命令则把find命令的输出重新排序，然后写入filenametags文件中
 
 #下面是查找所有的.h .c .cpp .cc
-find ./ -regex '.*\.\(h\|\cpp\|c\|cc\)' -type f -printf "%f\t%p\t1\n" | \
+find ./ -regex '.*\.\(h\|\cpp\|c\|cc\|java\)' -type f -printf "%f\t%p\t1\n" | \
         sort -f >> filenametags 
 #echo命令用来生成filenametags文件中的”!_TAG_FILE_SORTED”行，表明此tag文件是经过排序的。
 #find命令用来查找所有类型为普通文件，文件后缀名是.c .cpp .cc .h的文件，找到的文件按”文件名\t文件路径\t1″的格式输出出来。
