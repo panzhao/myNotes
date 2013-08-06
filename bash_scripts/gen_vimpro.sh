@@ -11,7 +11,7 @@ ctags -R
 echo "ctags ok";
 
 #tags profile
-"create curProFile.vim";
+echo "create curProFile.vim";
 path=`pwd`;
 string="set tags=`pwd`/tags";
 echo "$string" > curProFile.vim;
