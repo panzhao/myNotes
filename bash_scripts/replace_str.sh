@@ -1,0 +1,24 @@
+#!/bin/bash
+if [ $# -eq 2 ];then
+SEARCH_PATH=./
+SEARCH_NAME="*.cpp"
+SEARCH_STR=$1
+REPLACE_STR=$2
+elif [ $# -eq 3 ];then
+SEARCH_PATH=./
+SEARCH_NAME=$1
+SEARCH_STR=$2
+REPLACE_STR=$3
+elif [ $# -eq 3 ];then
+SEARCH_PATH=./
+SEARCH_NAME=$1
+SEARCH_STR=$2
+REPLACE_STR=$3
+else
+SEARCH_PATH=$1
+SEARCH_NAME=$2
+SEARCH_STR=$3
+REPLACE_STR=$4
+fi
+echo "find ${SEARCH_PATH} ${SEARCH_NAME} ${SEARCH_STR} ${REPLACE_STR}"
+find ${SEARCH_PATH} -name "${SEARCH_NAME}" | xargs sed -i 's/${SEARCH_STR}/${REPLACE_STR}/g'
