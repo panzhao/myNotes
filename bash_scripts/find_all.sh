@@ -12,4 +12,4 @@ fi
 
 echo "find_all $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH ! -name ".svn" | xargs grep "$SEARCH_STR" -G -n --color=auto -i
+find $SEARCH_PATH ! -name "*.svn*" | xargs grep "$SEARCH_STR" -G -n --color=auto -i

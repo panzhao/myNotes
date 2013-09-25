@@ -18,3 +18,4 @@ string1="set path+=`pwd`/**/*"
 echo "$string" > curProFile.vim;
 echo "$string1" >> curProFile.vim;
 echo "curProFile.vim ok \n";
+lookupfile.sh

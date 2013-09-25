@@ -10,6 +10,6 @@ else
     exit 0
 fi
 
-echo "$0 $SEARCH_PATH $SEARCH_FILE"
+#echo "$0 $SEARCH_PATH $SEARCH_FILE"
 
 find $SEARCH_PATH -name "${SEARCH_FILE}"
