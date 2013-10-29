@@ -1,6 +1,6 @@
 "显示行号
 set nocompatible
-set number
+"set number
 "set t_Co=256
 colorschem default
 set backspace=indent,eol,start
@@ -110,8 +110,11 @@ map<F2> <C-W>w
 "编译当前程序
 autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
-map<silent><F6> :q <CR>
-imap<silent><F6> <Esc> :wq <CR>
+map<silent><leader>x :q <CR>
+map<silent><leader>w :w <CR>
+map<silent><leader>qa :qa <CR>
+imap<silent><leader>x <Esc> :x <CR>
+imap<silent><leader>w <Esc> :w <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep
 nmap<F4> :set mouse=
@@ -179,7 +182,7 @@ syntax on "打开语法高亮
 
 
 "设置当前文件的目录为工作目录
-set autochdir
+"set autochdir
 
 """"""""""""""""""""""""""""""
 "
