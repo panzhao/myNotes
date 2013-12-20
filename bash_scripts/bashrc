@@ -114,4 +114,4 @@ export PATH=${PATH}:$JAVA_HOME/bin
 export PATH=/usr/local/php5/bin/:/home/lost+found/android_develop/android-sdk-linux/platform-tools:/home/lost+found/android_develop/eclipse:$PATH
 export USE_CCACHE=1
 export CCACHE_DIR=/home/lost+found/ccache
-export PATH=/home/guojiao/myNotes/bash_scripts:$PATH
+export PATH=/home/zhaopan/myNotes/bash_scripts:/usr/local/Qt-5.1.0/bin/:$PATH
