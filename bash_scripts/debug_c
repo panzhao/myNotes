@@ -1,6 +1,0 @@
-cd ~/android/IceCreamSandwich
-adb forward tcp:5039 tcp:5039
-prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-gdb out/target/product/generic/symbols/system/bin/app_process
-set solib-absolute-prefix /home/bdg/android/IceCreamSandwich/out/target/product/generic/symbols
-set solib-search-path /home/bdg/android/IceCreamSandwich/out/target/product/generic/symbols/system/lib
-target remote :5039
