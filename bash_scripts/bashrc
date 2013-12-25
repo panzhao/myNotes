@@ -85,7 +85,7 @@ alias l='ls -CF'
 #更改gdb的启动配置信息
 alias gdb='gdb -x ~/.gdbcfg'
 alias vi='vim'
-alias cdnotes='cd /home/myNotes/bash_scripts'
+alias cdnotes='cd /home/zhaopan/myNotes/bash_scripts'
 alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
