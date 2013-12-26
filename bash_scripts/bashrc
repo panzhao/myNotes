@@ -85,10 +85,14 @@ alias l='ls -CF'
 #更改gdb的启动配置信息
 alias gdb='gdb -x ~/.gdbcfg'
 alias vi='vim'
-alias cdnotes='cd /home/myNotes/bash_scripts'
+alias cdnotes='cd /home/zhaopan/myNotes/bash_scripts'
 alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
+alias cdqt510='cd /home/zhaopan/qt510'
+alias cdbuild510='cd /home/zhaopan/build510/qtwebkit'
+alias cdqtwebkit='cd /home/zhaopan/qt510/qtwebkit'
+alias cdwww='cd /var/www'
 
 
 # Alias definitions.
@@ -114,4 +118,5 @@ export PATH=${PATH}:$JAVA_HOME/bin
 export PATH=/usr/local/php5/bin/:/home/lost+found/android_develop/android-sdk-linux/platform-tools:/home/lost+found/android_develop/eclipse:$PATH
 export USE_CCACHE=1
 export CCACHE_DIR=/home/lost+found/ccache
-export PATH=/home/zhaopan/myNotes/bash_scripts:/usr/local/Qt-5.1.0/bin/:$PATH
+export PATH=/home/zhaopan/myNotes/bash_scripts:$PATH
+export PATH=/usr/local/Qt-5.1.0/bin:$PATH

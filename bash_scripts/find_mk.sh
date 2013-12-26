@@ -12,4 +12,4 @@ fi
 
 echo "$0 $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*Makefile" | xargs grep "$SEARCH_STR" -G -n --color=auto -i
+find $SEARCH_PATH -name "*am" | xargs grep "$SEARCH_STR" -G -n --color=auto -i

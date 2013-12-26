@@ -6,7 +6,7 @@ elif [ $# -eq 2 ];then
     SEARCH_PATH=$1
     SEARCH_STR="$2"
 else
-    echo "[Usage] find_cpp [search_path] search_string"
+    echo "[Usage] find_all [search_path] search_string"
     exit 0
 fi
 
