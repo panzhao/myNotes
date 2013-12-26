@@ -2,7 +2,7 @@
 set nocompatible
 "set number
 "set t_Co=256
-colorschem default
+colorschem desert
 set backspace=indent,eol,start
 "设置可粘贴 与snippets有冲突
 "set paste
@@ -243,3 +243,6 @@ endif
 "auto mark the state of file close, and recover it when next open the file.
 "au BufWinLeave *.* mkview
 "au BufWinEnter *.* silent loadview
+
+"qml configure
+autocmd BufNewFile,BufRead *.qml set filetype=qml
