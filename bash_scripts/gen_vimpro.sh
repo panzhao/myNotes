@@ -1,5 +1,6 @@
 #!/bin/bash
 #cscope
+touch Session.vim
 find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
 echo 'create cscope.out';
 cscope -bqk -i cscope.files 

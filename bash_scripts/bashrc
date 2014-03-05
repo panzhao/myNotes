@@ -89,10 +89,18 @@ alias cdnotes='cd /home/zhaopan/myNotes/bash_scripts'
 alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
-alias cdqt510='cd /home/zhaopan/qt510'
+alias cdqt520='cd /home/zhaopan/qt520'
 alias cdbuild510='cd /home/zhaopan/build510/qtwebkit'
+alias cdbuild520='cd /home/zhaopan/build520/qtwebkit'
 alias cdqtwebkit='cd /home/zhaopan/qt510/qtwebkit'
+alias cdcmoswebkit='cd /home/zhaopan/cmos1webkit/qtwebkit5/qtwebkit'
+alias cdcmosbuild='cd /home/zhaopan/cmos1webkit/webkit_build'
 alias cdwww='cd /var/www'
+alias cdbrowser='cd /home/zhaopan/cmos1webkit/cmos-browser/CMOS_Browser'
+alias cdqt='cd /home/zhaopan/qt510'
+alias vt='vi -t'
+alias cdexam='cd /home/zhaopan/qt520/qtwebkit-examples/examples/webkitwidgets'
+alias gitdiffpre='git diff HEAD^'
 
 
 # Alias definitions.
@@ -119,4 +127,5 @@ export PATH=/usr/local/php5/bin/:/home/lost+found/android_develop/android-sdk-li
 export USE_CCACHE=1
 export CCACHE_DIR=/home/lost+found/ccache
 export PATH=/home/zhaopan/myNotes/bash_scripts:$PATH
-export PATH=/usr/local/Qt-5.1.0/bin:$PATH
+export PATH=/usr/local/Qt-5.2.1/bin:$PATH
+export PATH=/home/zhaopan/chrome-project/depot_tools:$PATH

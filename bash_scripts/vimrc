@@ -74,7 +74,7 @@ cmap<leader>s  !cscope -bqk -i cscope.files <cr>
 """""""""""""""""""""""""""""""""""""""
 "LookUpFile
 """""""""""""""""""""""""""""""""""""""
-let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_MinPatLength = 4               "最少输入2个字符才开始查找
 let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
 let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
 let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
@@ -246,3 +246,34 @@ endif
 
 "qml configure
 autocmd BufNewFile,BufRead *.qml set filetype=qml
+
+"auto sv and ld session
+let g:AutoSessionFile="Session.vim"
+let g:OrigPWD=getcwd()
+if filereadable(g:AutoSessionFile)
+    if argc() == 0
+        au VimEnter * call EnterHandler()
+        au VimLeave * call LeaveHandler()
+    endif
+endif
+function! LeaveHandler()
+    exec "mks! ".g:OrigPWD."/".g:AutoSessionFile
+endfunction
+function! EnterHandler()
+    exe "source ".g:AutoSessionFile
+endfunction
+""auto sv and ld session
+"let g:AutoViminfoFile="viminfo.vim"
+"let g:OrigPWD=getcwd()
+"if filereadable(g:AutoSessionFile)
+"    if argc() == 0
+"        au VimEnter * call EnterVimHandler()
+"        au VimLeave * call LeaveVimHandler()
+"    endif
+"endif
+"function! LeaveVimHandler()
+"    exec "mks! ".g:OrigPWD."/".g:AutoViminfoFile
+"endfunction
+"function! EnterVimHandler()
+"    exe "source ".g:AutoViminfoFile
+"endfunction
