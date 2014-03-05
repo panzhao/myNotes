@@ -217,16 +217,17 @@ set history=100
 autocmd FileType c,cpp,cc,h set textwidth=100
 au BufRead,BufNewFile * setfiletype txt 
 
-"设置自动补全时候没有预览窗口
+" OmniCppComplete
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_MayCompleteDot = 1   " 输入 .  后自动补全
+let OmniCpp_MayCompleteArrow = 1 " 输入 -> 后自动补全
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 set completeopt=menu
-let OmniCpp_GlobalScopeSearch = 1  " 0 or 1
 let OmniCpp_NamespaceSearch = 1   " 0 ,  1 or 2
 let OmniCpp_DisplayMode = 1
 let OmniCpp_ShowScopeInAbbr = 0
 let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_MayCompleteDot = 1
-let OmniCpp_MayCompleteArrow = 1
 let OmniCpp_MayCompleteScope = 1
 
 "In order to use textbrowser.
