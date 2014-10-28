@@ -1,6 +1,6 @@
 [user]
 	name = zhaopan
-	email = zhaopan.m@gmial.com
+	email = zhaopan@cmos.net
 [core]
 	editor = vim
 [color]
@@ -8,3 +8,9 @@
 [alias]
 	throw =reset --hard HEAD
 	throwh =reset --hard HEAD^
+[commit]
+	template = /home/zhaopan/work/git_template
+[diff]
+    external = gitdiff.sh
+[pager]
+    diff =
