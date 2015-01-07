@@ -61,11 +61,13 @@ set shiftwidth=4
 """""""""""""""""""""""""""""""""
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_One_File = 1
+"let Tlist_Use_Right_Window = 1 "右侧显示taglist
 
 """"""""""""""""""""
 "ctags 
 """"""""""""""""""""
-set tags=./tags,../tags
+"set tags=./tags,../tags
 "生成tags文件
 cmap<leader>t !ctags -R `pwd` <cr>
 "生成cscope索引文件
@@ -128,7 +130,7 @@ map <silent><leader><space> :cw<cr>
 map <silent><leader>n :cn <CR>
 map <silent><leader>p :cp <CR>
 map <silent><leader>q :cclose<CR>
-map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./*.[chj]* <CR> :cw <CR>
+map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
 
 """"""""""""""""""""""""""""""
 " netrw setting
@@ -214,7 +216,7 @@ set is
 set history=100
 
 "设置自动换行
-autocmd FileType c,cpp,cc,h set textwidth=100
+"autocmd FileType c,cpp,cc,h set textwidth=100
 au BufRead,BufNewFile * setfiletype txt 
 
 " OmniCppComplete

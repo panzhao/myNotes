@@ -1,0 +1,500 @@
+p this
+p this->mainFrame()
+p this->mainFrame()->document()->url()
+f
+finish 
+s
+n
+l
+f
+n
+n
+n
+l
+f
+l
+p frameLoader->client()->canCachePage()
+p documentLoader->applicationCacheHost()->canCacheInPageCache()
+p document->canSuspendActiveDOMObjects()
+p documentLoader->isStopping()
+p frameLoader->history()->currentItem()
+f
+f
+l
+s
+s
+finish 
+s
+p m_isNull
+finish 
+s
+p documentLoader->substituteData().isValid()
+f
+l
+p frameLoader->subframeLoader()->containsPlugins()
+p documentLoader
+p documentLoader->mainDocumentError().isNull()
+p ocument->url().protocolIs("https")
+p document->url().protocolIs("https")
+p document->domWindow()
+f
+p  DatabaseManager::manager().hasOpenDatabases(document)
+p frameLoader->history()->currentItem()
+p rameLoader->quickRedirectComing()
+p frameLoader->quickRedirectComing()
+p documentLoader->isLoadingInAPISense()
+p documentLoader->isStopping()
+p document->canSuspendActiveDOMObjects()
+l
+l
+p documentLoader->applicationCacheHost()->canCacheInPageCache()
+f
+s
+finish 
+s
+finish 
+s
+finish 
+f
+c
+c
+b 332
+c
+c
+c
+c
+c
+s
+l
+finish 
+c
+c
+c
+s
+n
+n
+c
+c
+c
+up
+p frame()->document()
+c
+c
+c
+c
+c
+c
+n
+n
+n
+n
+s
+finish 
+finish 
+s
+finish 
+s
+finish 
+f
+finish 
+f
+n
+c
+c
+c
+finis
+finish 
+finish 
+c
+info b
+enable 6
+c
+info b
+c
+shell ps aux | grep -i webprocess
+attach 13977
+c
+n
+b 2886
+d breakpoints 6
+c
+p pageCache()->get(history()->provisionalItem()
+p pageCache()->get(history()->provisionalItem())
+n
+p  pageCache()->canCache(m_frame->page())
+c
+c
+c
+c
+c
+c
+c
+c
+shell ps aux | grep -i webprocess
+attach 14037
+info b
+c
+c
+n
+finish 
+n
+finish 
+f
+p frame()
+p frame()->document()
+p frame()->document()->url()
+c
+up
+up
+up
+p frame()->document()->url()
+c
+f
+up
+up
+p frame()->document()->url()
+c
+p frame()->document()->url()
+f
+c
+finish 
+finish 
+finish 
+c
+c
+c
+l
+b 332
+c
+c
+c
+c
+c
+s
+l
+f
+l
+p  activeObjectsEnd
+p  activeObjectsEnd->next
+p  activeObjectsEnd.impl->next
+p  activeObjectsEnd
+p  activeObjectsEnd.m_imple
+p  activeObjectsEnd.m_impl
+p  activeObjectsEnd.m_impl->m_position
+p  activeObjectsEnd.m_impl.m_position
+f
+l
+f
+f
+up
+p document->canSuspendActiveDOMObjects()
+f
+down
+n
+n
+n
+n
+n
+p *iter
+p **iter
+shell ps aux | grep -i webprocess
+attach 15501
+b FrameLoader.cpp:2855
+c
+b WebKit::WebPage::goForward
+c
+n
+n
+p item
+n
+n
+s
+finish 
+s
+l
+p *item
+f
+n
+b 
+clear
+b WebCore::FrameLoader::continueLoadAfterNavigationPolicy
+c
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+p history()->provisionalItem()->isInPageCache()
+c
+shell ps aux | grep -i webprocess
+shell ps aux | grep -i webprocess
+attach 22328
+b WebCore::PageCache::canCache
+c
+n
+n
+n
+c
+c
+shell ps aux | grep -i webprocess
+b WebCore::PageCache::canCachePageContainingThisFrame
+c
+c
+shell ps aux | grep -i webprocess
+attach 22479
+ c
+c
+n
+s
+finish 
+s
+finish 
+s
+finish 
+s
+f
+ifconfig
+shell ifconfig
+shell ps aux | grep -i webprocess
+attach 5873
+b WebCore::PageCache::canCachePageContainingThisFrame
+c
+bt
+f
+up
+up
+up
+f 0
+finish 
+finish 
+n
+s
+finish 
+s
+fini
+s
+n
+finish 
+s
+n
+n
+n
+finish 
+s
+l
+finish 
+s
+l
+d
+f
+finish 
+c
+c
+c
+finish 
+c
+finish 
+c
+bt
+c
+finish 
+finish 
+f
+l
+f
+l
+p *item
+c
+finish 
+finish 
+p *item
+f
+finish 
+p *item
+c
+finish 
+up
+down
+p frameLoader->documentLoader()
+c
+n
+p frameloader
+p frameLoader
+f
+n
+p documentLoader
+f
+n
+n
+p a
+p a
+c
+n
+info loca
+n
+n
+n
+n
+n
+n
+n
+n
+c
+c
+c
+n
+return true
+finish 
+n
+s
+finish 
+s
+c
+c
+shell ps aux | grep -i webprocess
+attach 7576
+c
+finish 
+f
+finish 
+p *item
+f
+c
+finish 
+c
+c
+c
+finish 
+c
+c
+shell ps aux | grep -i webprocess
+attach 8007
+c
+finish 
+c
+n
+c
+c
+shell ps aux | grep -i webprocess
+attach 8651
+b DOMWindow.cpp:177
+c
+c
+c
+p *item
+finish 
+finish 
+p * item
+c
+bt
+c
+n
+n
+n
+n
+f
+n
+n
+n
+c
+c
+bt
+c
+b WebCore::ActiveDOMObject::ActiveDOMObject
+c
+bt
+c
+c
+c
+bt
+c
+c
+c
+c
+c
+clear
+c
+info b
+c
+c
+c
+bt
+f
+c
+finish 
+finish 
+finish 
+c
+finish 
+finish 
+finish 
+c
+c
+c
+shell ps aux | grep -i webprocess
+attach 16116
+attach 26116
+c
+info b
+d breakpoints 
+c
+shell ps aux | grep -i webprocess
+shell ps aux | grep -i webprocess
+attach 4206
+b WebKit::WebBackForwardList::addItem
+c
+b WebKit::WebBackForwardListProxy::addItem
+c
+bt
+f
+up
+up
+up
+up
+up
+l
+down
+down
+down
+f 0
+l
+f
+n
+n
+n
+s
+p uniqueHistoryItemID
+l
+shell ps aux | grep -i webprocess
+attach 5904
+b WebKit::WebFrameLoaderClient::dispatchDecidePolicyForNavigationAction
+c
+p request
+c
+p request
+f
+c
+c
+c
+p request
+c
+p request
+c
+b WebKit::QtWebPagePolicyClient::decidePolicyForNavigationAction
+c
+c
+c
+disable 
+c
+shell ps aux | grep -i webprocess
+attach 13533
+c

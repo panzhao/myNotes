@@ -90,17 +90,31 @@ alias cdnotes='cd $HOME_DIR/myNotes/bash_scripts'
 alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
-alias cdqtwebkit='cd $HOME_DIR/qt520/qtwebkit'
-alias cdcmoswebkit='cd $HOME_DIR/cmoswebkit/qtwebkit5/qtwebkit'
-alias cdcmosbuild='cd $HOME_DIR/cmoswebkit/webkit_build'
-alias cdwebkitbuild='cd $HOME_DIR/cmos1webkit/nox11_build'
+alias cdqt540='cd $HOME_DIR/work/qt540'
+alias cdwebengine='cd $HOME_DIR/work/qt540/qtwebengine'
+alias cdcmoswebkit='cd $HOME_DIR/work/qtwebkit5/'
+alias cdbuilccmoswebkit='cd $HOME_DIR/work/b-cmos-webkit'
 alias cdwww='cd /var/www'
-alias cdbrowser='cd $HOME_DIR/cmos1webkit/cmos-browser/CMOS_Browser'
-alias cdqt='cd $HOME_DIR/qt520'
+alias cdwork='cd $HOME_DIR/work'
+alias cdbrowser='cd $HOME_DIR/work/cmos-browser/'
+alias cdb-browser='cd $HOME_DIR/work/b-browser'
+alias cdsdkb-browser='cd $HOME_DIR/work/sdk-build/b-browser'
+alias cdsdkcompile='cd $HOME_DIR/work/sdk-build'
+alias cdsdkdownload='cd $HOME_DIR/work/sdk-build/cmos-download'
+alias cdsdkb-download='cd $HOME_DIR/work/sdk-build/b-cmos-download'
+alias cdsdk='cd $HOME_DIR/work/sdk-build/'
+alias cdqt='cd $HOME_DIR/work/qt521'
+alias cdqt531='cd $HOME_DIR/work/qt531'
+alias cd302s='cd $HOME_DIR/work/302s'
+alias cdsh='cd $HOME_DIR/work/sh'
 alias vt='vi -t'
 alias cdexam='cd $HOME_DIR/qt520/qtwebkit-examples/examples/webkitwidgets'
 alias gitdiffpre='git diff HEAD^'
-alias cddownloadmanger='cd $HOME_DIR/work/downloadManger'
+alias cddownload='cd $HOME_DIR/work/cmos-download/'
+alias cdxiazai='cd $HOME_DIR/Downloads'
+alias cddesktop='cd $HOME_DIR/Desktop'
+alias cdchrome_org='cd $HOME_DIR/android/master/external/chromium_org'
+alias cddesignbrowser='cd /home/zhaopan/SYBEROS/草稿版/各组材料/浏览器组/设计方案'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -118,14 +132,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-JAVA_HOME=/home/lost+found/android_develop/jdk1.6.0_31/
+#android
+JAVA_HOME=/home/zhaopan/android/jdk1.6.0_45
 export CLASSPATH=$JAVA_HOME/lib
 export PATH=${PATH}:$JAVA_HOME/bin
-
-export PATH=/usr/local/php5/bin/:/home/lost+found/android_develop/android-sdk-linux/platform-tools:/home/lost+found/android_develop/eclipse:$PATH
 export USE_CCACHE=1
-export CCACHE_DIR=/home/lost+found/ccache
+export CCACHE_DIR=/home/zhaopan/ccache
+#android
+
+
+export PATH=/home/zhaopan/program/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/zhaopan/program/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:$PATH
 export PATH=$HOME_DIR/myNotes/bash_scripts:$PATH
-export PATH=/usr/local/Qt-5.2.1/bin:$PATH
+export PATH=/usr/local/Qt-5.3.1/bin:$PATH
 export PATH=$HOME_DIR/chrome-project/depot_tools:$PATH
 alias sdk=/srv/cmos/sdks/sdk/mer-sdk-chroot
+export PATH=~/bin:$PATH
+set -o vi

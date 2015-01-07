@@ -1,0 +1,6 @@
+# skytree_make.sh deleted this.
+python
+import sys
+sys.path.insert(0, "/home/zhaopan/work/qtwebkit5/qtwebkit/Tools/gdb/")
+import webkit
+
