@@ -119,17 +119,21 @@ imap<silent><leader>x <Esc> :x <CR>
 imap<silent><leader>w <Esc> :w <CR>
 cmap<F2> set tags=
 cmap<F3> vimgrep
-nmap<F4> :set mouse=
+"nmap<F4> :set mouse=
 nmap<silent><leader>m :A<cr>
-"打开list
-map<F8> :Tlist <CR>
+"打开tagbar
+map<F8> ::TagbarToggle <CR>
+let g:tagbar_left = 1
+"end set tagbar
+
 "在tlist中加入文件
 map<F12> :TlistAddFiles *.[ch]*
 "关于quichfix
-map <silent><leader><space> :cw<cr>
-map <silent><leader>n :cn <CR>
-map <silent><leader>p :cp <CR>
-map <silent><leader>q :cclose<CR>
+"map <silent><leader><space> :cw<cr>
+"map <silent><leader>n :cn <CR>
+"map <silent><leader>p :cp <CR>
+"map <silent><leader>q :cclose<CR>
+"end 关于quichfix
 map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
 
 """"""""""""""""""""""""""""""
@@ -280,3 +284,94 @@ endfunction
 "function! EnterVimHandler()
 "    exe "source ".g:AutoViminfoFile
 "endfunction
+
+
+"----set bundle
+set nocompatible              " be iMproved, required
+filetype on                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+"方法一: github上的用户写的插件，使用这种用户名+repo名称的方式
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'panzhao/snipMate'
+"Bundle 'Valloric/ListToggle'
+"Bundle 'scrooloose/syntastic'
+
+
+"方法二： vimscripts的repo使用下面的格式，直接是插件名称"
+Plugin 'lookupfile'
+Plugin 'bufexplorer.zip'
+Plugin 'Tagbar'
+Plugin 'genutils'
+Plugin 'a.vim'
+"Plugin 'SuperTab'
+"Plugin 'UltiSnips'
+" Track the engine.
+"Plugin 'SirVer/ultisnips'
+"" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+"..................................
+"方法三：非github的插件，可以直接使用其git地址 
+" Bundle 'git://git.wincent.com/command-t.git'
+"......................................
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"----end set bundle
+
+"设置YCM
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'vimrc' : 1,
+      \ 'gitcommit' : 1,
+      \}
+if filereadable("./.ycm_extra_conf.py")
+   let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
+else 
+   let g:ycm_global_ycm_extra_conf = ''
+endif
+
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_invoke_completion = '<S-Space>'
+let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+ let g:ycm_show_diagnostics_ui = 0 "关闭语法错误提示
+
+"end 设置YCM
+
+"设置ultisnipe补全
+"let g:UltiSnipsSnippetsDir='~/.vim/bundle/vim-snippets/UltiSnips/'
+"let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"end 设置ultisnipe补全
