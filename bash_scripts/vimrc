@@ -129,12 +129,14 @@ let g:tagbar_left = 1
 "在tlist中加入文件
 map<F12> :TlistAddFiles *.[ch]*
 "关于quichfix
-"map <silent><leader><space> :cw<cr>
-"map <silent><leader>n :cn <CR>
-"map <silent><leader>p :cp <CR>
-"map <silent><leader>q :cclose<CR>
+map <silent><leader><space> :cw<cr>
+map <silent><leader>n :cn <CR>
+map <silent><leader>p :cp <CR>
+map <silent><leader>qq :cclose<CR>
+"使用quickfix搜索文件
+"map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
+map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :cw <CR>
 "end 关于quichfix
-map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
 
 """"""""""""""""""""""""""""""
 " netrw setting
@@ -143,7 +145,7 @@ map <silent><space><F6> :vimgrep <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR>
 nmap <silent> <leader>fe :Explore<cr>
 
 """"""""对f*的映射""""""""""
-imap jj  <Esc>
+imap <leader>j  <Esc>
 
 """""""""""""""""""""""""""""""""
 "
@@ -302,7 +304,6 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 "方法一: github上的用户写的插件，使用这种用户名+repo名称的方式
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'panzhao/snipMate'
 "Bundle 'Valloric/ListToggle'
 "Bundle 'scrooloose/syntastic'
 
@@ -316,9 +317,9 @@ Plugin 'a.vim'
 "Plugin 'SuperTab'
 "Plugin 'UltiSnips'
 " Track the engine.
-"Plugin 'SirVer/ultisnips'
-"" Snippets are separated from the engine. Add this if you want them:
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 "..................................
 "方法三：非github的插件，可以直接使用其git地址 
 " Bundle 'git://git.wincent.com/command-t.git'
@@ -365,7 +366,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_key_invoke_completion = '<S-Space>'
 let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
- let g:ycm_show_diagnostics_ui = 0 "关闭语法错误提示
+let g:ycm_show_diagnostics_ui = 0 "关闭语法错误提示
 
 "end 设置YCM
 

@@ -8,9 +8,9 @@ else
 fi 
 
 #find all source file
-find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
-cscope -bqk -i cscope.files 
-echo "cscope.files ok";
+#find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
+#cscope -bqk -i cscope.files 
+#echo "cscope.files ok";
 
 
 #ctags
@@ -21,7 +21,7 @@ else
     echo "rm old ctags ok";
 fi    
 
-#ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
 
 if [ ! -f .ycm_extra_conf.py ]; then
     echo "--------------------------"
