@@ -145,7 +145,7 @@ map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :c
 nmap <silent> <leader>fe :Explore<cr>
 
 """"""""对f*的映射""""""""""
-imap <leader>j  <Esc>
+imap jj  <Esc>
 
 """""""""""""""""""""""""""""""""
 "
