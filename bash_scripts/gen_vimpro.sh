@@ -24,9 +24,9 @@ fi
 ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
 
 if [ ! -f .ycm_extra_conf.py ]; then
-    echo "--------------------------"
-    cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py ./
-else 
+    echo ".ycm_extra_conf.py not exist"
+    cp /home/zhaopan/myNotes/bash_scripts/ycm_extra_conf.py ./.ycm_extra_conf.py
+else
     echo ".ycm_extra_conf.py exist"
 fi
 
