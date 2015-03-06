@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $# -eq 1 ];then
-    SEARCH_PATH=.
+    SEARCH_PATH=`pwd`
     SEARCH_FILE="$1"
 elif [ $# -eq 2 ];then
     SEARCH_PATH=$1

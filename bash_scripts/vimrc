@@ -135,7 +135,8 @@ map <silent><leader>p :cp <CR>
 map <silent><leader>qq :cclose<CR>
 "使用quickfix搜索文件
 "map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
-map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :cw <CR>
+"map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :cw <CR>
+map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> `pwd`/*[chjq]* -r <CR> :cw <CR>
 "end 关于quichfix
 
 """"""""""""""""""""""""""""""

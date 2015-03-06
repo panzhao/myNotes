@@ -8,8 +8,8 @@ else
 fi 
 
 #find all source file
-#find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
-#cscope -bqk -i cscope.files 
+find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
+cscope -bqk -i cscope.files 
 #echo "cscope.files ok";
 
 
@@ -31,16 +31,16 @@ else
 fi
 
 #tags profile
-#if [ ! -f curProFile.vim ]; then
-#    path=`pwd`;
-#    string="set tags+=`pwd`/tags";
-#    string1="set path+=`pwd`/**/*"
-#    echo "$string" > curProFile.vim;
-#    echo "$string1" >> curProFile.vim;
-#    echo "curProFile.vim ok";
-#else
-#   echo  "curProFile.vim exist, no need to create"
-#fi
+if [ ! -f curProFile.vim ]; then
+    path=`pwd`;
+    string="set tags+=`pwd`/tags";
+    string1="set path+=`pwd`/**/*"
+    echo "$string" > curProFile.vim;
+    echo "$string1" >> curProFile.vim;
+    echo "curProFile.vim ok";
+else
+   echo  "curProFile.vim exist, no need to create"
+fi
 
 # 生成lookupfile索引文件
 lookupfile.sh
