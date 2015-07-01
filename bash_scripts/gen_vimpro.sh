@@ -10,7 +10,7 @@ fi
 #find all source file
 find `pwd` -name "*.cpp" -o -name "*.h" -o -name "*.c" > cscope.files;
 cscope -bqk -i cscope.files 
-#echo "cscope.files ok";
+echo "cscope.files ok";
 
 
 #ctags

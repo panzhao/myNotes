@@ -12,4 +12,4 @@ fi
 
 echo "find_src $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.cxx" -o -name "*.c" -o -name "*.qml" | xargs grep "$SEARCH_STR" -E -n --color=auto -i
+find $SEARCH_PATH -name .git -prune -o -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.cxx" -o -name "*.c" | xargs grep "$SEARCH_STR" -E -n --color=auto -i

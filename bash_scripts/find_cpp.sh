@@ -12,4 +12,4 @@ fi
 
 echo "find_cpp $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*.cpp" -o -name "*.cc" -name "*.cxx" -o -name "*.c" | xargs grep "$SEARCH_STR" -G -n --color=auto -i
+find $SEARCH_PATH  -name .git -prune -o -name "*.cpp" -o -name "*.cc" -name "*.cxx" -o -name "*.c" | xargs grep "$SEARCH_STR" -G -n --color=auto -i

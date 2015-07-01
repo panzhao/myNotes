@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $# -eq 1 ];then
-    SEARCH_PATH=.
+    SEARCH_PATH=`pwd`
     SEARCH_STR="$1"
 elif [ $# -eq 2 ];then
     SEARCH_PATH=$1
@@ -10,7 +10,6 @@ else
     exit 0
 fi
 
-#echo "$0 $SEARCH_PATH $SEARCH_STR"
+echo "$0 $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*pri" -o -name "*pro" -o -name "*.prf" -o -name "*prl" \
-     | xargs grep "$SEARCH_STR" -G -n --color=auto -i
+find $SEARCH_PATH -name '.git' -prune  -o -name "*pri" -o -name "*pro" -o -name "*.prf" -o -name "*prl" -o -name "*.qrc" | xargs grep "$SEARCH_STR" -G -n --color=auto -i

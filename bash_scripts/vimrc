@@ -87,7 +87,10 @@ let g:LookupFile_ignorecase = 1
 let g:LookupFile_smartcase = 1
 
 if filereadable("./filenametags")
-   let g:LookupFile_TagExpr = '"./filenametags"'
+    let g:LookupFile_TagExpr = '"./filenametags"'
+    map <space><F7> :grep! <c-r>=expand("<cword>")<CR> "%"  <CR> :cw <CR>
+else
+    map <space><F7> :grep! <c-r>=expand("<cword>")<CR> `pwd`/"%"  <CR> :cw <CR>
 endif
 
 nmap <silent> <leader>lk :LUTags<cr>
@@ -118,9 +121,11 @@ map<silent><leader>qa :qa <CR>
 imap<silent><leader>x <Esc> :x <CR>
 imap<silent><leader>w <Esc> :w <CR>
 cmap<F2> set tags=
-cmap<F3> vimgrep
+nmap<F3> :%s/\<<c-r>=expand("<cword>")<CR>\>//g
 "nmap<F4> :set mouse=
 nmap<silent><leader>m :A<cr>
+
+nmap<leader><F2> :!pushfile.sh <c-r>=expand("%:p")<CR> <cr>
 "打开tagbar
 map<F8> ::TagbarToggle <CR>
 let g:tagbar_left = 1
@@ -133,10 +138,13 @@ map <silent><leader><space> :cw<cr>
 map <silent><leader>n :cn <CR>
 map <silent><leader>p :cp <CR>
 map <silent><leader>qq :cclose<CR>
+
 "使用quickfix搜索文件
-"map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./**/*.[chjq]* <CR> :cw <CR>
-"map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :cw <CR>
-map <silent><space><F6> :grep! <c-r>=expand("<cword>")<CR> `pwd`/*[chjq]* -r <CR> :cw <CR>
+map <space><F6> :grep! <c-r>=expand("<cword>")<CR>  ./*[chjq]*  -r <CR> :cw <CR>
+
+"map <space><F6> :grep! <c-r>=expand("<cword>")<CR> ./*[chjq]* -r <CR> :cw <CR>
+""%"为当前文件并且包含路径,"%:t"不包含路径的文件, vim命令行使用 echo expand("%:t"), echo expand("%")
+"map <space><F7> :grep! <c-r>=expand("<cword>")<CR> `pwd`/"%"  <CR> :cw <CR>
 "end 关于quichfix
 
 """"""""""""""""""""""""""""""
@@ -202,14 +210,14 @@ let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
 let g:bufExplorerSplitRight=0        " Split left.
 let g:bufExplorerSplitVertical=1     " Split vertically.
-let g:bufExplorerSplitVertSize = 30  " Split width
+"let g:bufExplorerSplitVertSize = 30  " Split width
 let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 autocmd BufWinEnter \[Buf\ List\] setl nonumber
 
 """"""""""""""""""""""""""""""
 " winManager setting
 """""""""""""""""""""""""""""""
-let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
+let g:winManagerWindowLayout = "BufExplorer,FileExplorer"
     let g:winManagerWidth = 30
 let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
@@ -315,6 +323,7 @@ Plugin 'bufexplorer.zip'
 Plugin 'Tagbar'
 Plugin 'genutils'
 Plugin 'a.vim'
+Plugin 'winmanager'
 "Plugin 'SuperTab'
 "Plugin 'UltiSnips'
 " Track the engine.
@@ -374,6 +383,24 @@ let g:ycm_show_diagnostics_ui = 0 "关闭语法错误提示
 "设置ultisnipe补全
 "let g:UltiSnipsSnippetsDir='~/.vim/bundle/vim-snippets/UltiSnips/'
 "let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "end 设置ultisnipe补全
+"
+"自定义函数
+function FindFile(cword)
+    let s:ext = expand("%:e")
+    let s:fileName = a:cword.".".s:ext
+    echo  a:cword.".".s:ext
+    "echo s:fileName
+    "echo type(s:fileName)
+    "echo type(CDialog.qml)
+    "find CDialog.qml
+    if (s:ext == "qml" || s:ext == "js")
+        execute "find" s:fileName
+    endif
+endfunction
+
+
+"查找当前档次加扩展名组成的字符串
+map<silent><leader>ff  :call FindFile(expand("<cword>"))<CR>

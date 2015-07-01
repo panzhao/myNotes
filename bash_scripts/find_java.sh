@@ -12,4 +12,4 @@ fi
 
 echo "find_java $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*.java" | xargs grep "$SEARCH_STR" -G -n --color=auto -i
+find $SEARCH_PATH -name .git -prune -o -name "*.java" | xargs grep "$SEARCH_STR" -G -n --color=auto -i
