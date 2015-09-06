@@ -233,7 +233,7 @@ set history=100
 
 "设置自动换行
 "autocmd FileType c,cpp,cc,h set textwidth=100
-au BufRead,BufNewFile * setfiletype txt 
+"au BufRead,BufNewFile * setfiletype txt 
 
 " OmniCppComplete
 let OmniCpp_GlobalScopeSearch = 1
@@ -249,7 +249,7 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_MayCompleteScope = 1
 
 "In order to use textbrowser.
-au BufEnter *.txt setlocal ft=txt
+"au BufEnter *.txt setlocal ft=txt
 
 """"""""""""""""""""""""""""""""
 "read project file of current project
@@ -326,6 +326,7 @@ Plugin 'Tagbar'
 Plugin 'genutils'
 Plugin 'a.vim'
 Plugin 'winmanager'
+Plugin 'cmake.vim-syntax'
 "Plugin 'SuperTab'
 "Plugin 'UltiSnips'
 " Track the engine.
@@ -405,3 +406,8 @@ endfunction
 
 "查找当前档次加扩展名组成的字符串
 map<silent><leader>ff  :call FindFile(expand("<cword>"))<CR>
+
+"cmake 设置
+autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim 
+autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in set filetype=cmake
+autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
