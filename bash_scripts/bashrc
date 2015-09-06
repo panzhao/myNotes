@@ -91,12 +91,14 @@ alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cdqt540='cd $HOME_DIR/work/qt540'
-alias cdwebengine='cd $HOME_DIR/work/qt540/qtwebengine'
+alias cdwebengine='cd $HOME_DIR/work/qt540/qtwebengine/src/3rdparty/chromium/third_party/WebKit'
 alias cdcmoswebkit='cd $HOME_DIR/work/qtwebkit5/'
 alias cdbuilccmoswebkit='cd $HOME_DIR/work/b-cmos-webkit'
 alias cdwww='cd /var/www'
 alias cdwork='cd $HOME_DIR/work'
-alias cdbrowser='cd $HOME_DIR/work/cmos-browser/'
+alias cd20='cd $HOME_DIR/work/2.0'
+alias cdphotoPlugin='cd $HOME_DIR/work/2.0/qmlplugin-multimedia-photos'
+alias cdbrowser='cd $HOME_DIR/work/browser/'
 alias cdb-browser='cd $HOME_DIR/work/b-browser'
 alias cdsdkb-browser='cd $HOME_DIR/work/sdk-build/b-browser'
 alias cdsdkcompile='cd $HOME_DIR/work/sdk-build'
@@ -110,13 +112,34 @@ alias cdsh='cd $HOME_DIR/work/sh'
 alias vt='vi -t'
 alias cdexam='cd $HOME_DIR/qt520/qtwebkit-examples/examples/webkitwidgets'
 alias gitdiffpre='git diff HEAD^'
-alias cddownload='cd $HOME_DIR/work/cmos-download/'
+alias cddownload='cd $HOME_DIR/work/downloader/'
 alias cdxiazai='cd $HOME_DIR/Downloads'
 alias cddesktop='cd $HOME_DIR/Desktop'
 alias cdchrome_org='cd $HOME_DIR/android/master/external/chromium_org'
 alias cddesignbrowser='cd /home/zhaopan/SYBEROS/草稿版/各组材料/浏览器组/设计方案'
+alias bundleInstall='vim +BundleInstall +qall'
+alias bundleClean='vim +BundleClean +qall'
+alias cdbundle='cd /home/zhaopan/.vim/bundle'
+alias cdbshell='cdb shell'
+alias cdbpush='cdb push'
+alias cdbpull='cdb pull'
+alias cdstr_replace='cd /home/zhaopan/work/str_replace'
+alias install='sudo apt-get install'
+alias search='aptitude search'
+alias sb2se='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper se'
+alias sb2install='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper in'
+alias sb2up='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper update'
+alias sb2ref='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper ref'
+alias sb2make='sb2 -t syberos-target-armv7tnhl make -j8'
+alias sb2rm='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper rm'
+alias sb2qmake='sb2 -t syberos-target-armv7tnhl /usr/lib/qt5/bin/qmake'
+alias sb2rpmbuild='sb2 -t syberos-target-armv7tnhl rpmbuild -ba'
+alias syberossb2='sb2 -t syberos-target-armv7tnhl'
+alias cdtest='cd $HOME_DIR/test'
+alias cdrpm='cd $HOME_DIR/rpmbuild/RPMS/armv7tnhl'
+alias cdextractor='cd $HOME_DIR/work/extractor'
 
-# Alias definitions.
+# Alias definitions
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -133,18 +156,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 #android
-JAVA_HOME=/home/zhaopan/android/jdk1.6.0_45
-export CLASSPATH=$JAVA_HOME/lib
-export PATH=${PATH}:$JAVA_HOME/bin
+JAVA_HOME=$HOME_DIR/android/jdk1.6.0_45
+export CLASSPATH=$JAVA_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$PATH
 export USE_CCACHE=1
 export CCACHE_DIR=/home/zhaopan/ccache
 #android
 
 
-export PATH=/home/zhaopan/program/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/zhaopan/program/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:$PATH
+export PATH=$HOME_DIR/android/android-sdk-linux/tools:/home/zhaopan/android/android-sdk-linux/platform-tools:$PATH
 export PATH=$HOME_DIR/myNotes/bash_scripts:$PATH
 export PATH=/usr/local/Qt-5.3.1/bin:$PATH
 export PATH=$HOME_DIR/chrome-project/depot_tools:$PATH
-alias sdk=/srv/cmos/sdks/sdk/mer-sdk-chroot
 export PATH=~/bin:$PATH
-set -o vi
+export PATH=/home/zhaopan/.vim/bundle/YCM-Generator:$PATH
+#set -o vi
+alias sdk=/srv/syberos/sdks/sdk/syberos-sdk-chroot

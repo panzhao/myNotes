@@ -86,6 +86,7 @@ let g:LookupFile_Bufs_LikeBufCmd = 0
 let g:LookupFile_ignorecase = 1
 let g:LookupFile_smartcase = 1
 
+"如果包含该文件，按照我的配置，说明路径没有auchdir
 if filereadable("./filenametags")
     let g:LookupFile_TagExpr = '"./filenametags"'
     map <space><F7> :grep! <c-r>=expand("<cword>")<CR> "%"  <CR> :cw <CR>
@@ -96,7 +97,7 @@ endif
 nmap <silent> <leader>lk :LUTags<cr>
 nmap <silent> <leader>ll :LUBufs<cr>
 nmap <silent> <leader>lw :LUWalk<cr>
-nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
+"nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -313,6 +314,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 "方法一: github上的用户写的插件，使用这种用户名+repo名称的方式
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'rdnetto/YCM-Generator'
 "Bundle 'Valloric/ListToggle'
 "Bundle 'scrooloose/syntastic'
 
@@ -369,7 +371,7 @@ let g:ycm_filetype_blacklist = {
 if filereadable("./.ycm_extra_conf.py")
    let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
 else 
-   let g:ycm_global_ycm_extra_conf = ''
+   let g:ycm_global_ycm_extra_conf = '/home/zhaopan/myNotes/bash_scripts/ycm_extra_conf.py'
 endif
 
 let g:ycm_confirm_extra_conf = 0
@@ -400,7 +402,6 @@ function FindFile(cword)
         execute "find" s:fileName
     endif
 endfunction
-
 
 "查找当前档次加扩展名组成的字符串
 map<silent><leader>ff  :call FindFile(expand("<cword>"))<CR>

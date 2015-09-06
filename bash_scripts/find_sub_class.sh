@@ -12,4 +12,4 @@ fi
 
 echo "find_src $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.cxx" -o -name "*.c" | xargs grep -nEi --color=auto "class.*:.*(public|private|protected)\s+.*\<$SEARCH_STR\>.*"
+find $SEARCH_PATH find -name .git -prune -o  \( -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.cxx" -o -name "*.c" \) -print | xargs grep -nEi --color=auto "class.*:.*(public|private|protected)\s+.*\<$SEARCH_STR\>.*"
