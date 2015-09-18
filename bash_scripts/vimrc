@@ -316,7 +316,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
 "Bundle 'Valloric/ListToggle'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 
 
 "方法二： vimscripts的repo使用下面的格式，直接是插件名称"

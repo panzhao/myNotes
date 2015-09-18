@@ -35,8 +35,10 @@ if [ ! -f curProFile.vim ]; then
     path=`pwd`;
     string="set tags+=`pwd`/tags";
     string1="set path+=`pwd`/**/*"
+    string2='"autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>'
     echo "$string" > curProFile.vim;
     echo "$string1" >> curProFile.vim;
+    echo "$string2" >> curProFile.vim;
     echo "curProFile.vim ok";
 else
    echo  "curProFile.vim exist, no need to create"

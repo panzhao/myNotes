@@ -12,7 +12,7 @@ fi
 
 echo "find_all $SEARCH_PATH $SEARCH_STR"
 
-find $SEARCH_PATH  \( -path "./.git" -o -name tags -o -name "cscope*"  \) -prune -o -print | xargs grep "$SEARCH_STR" -G -n  --color=auto -i -H
+find $SEARCH_PATH  \( -path "./.git" -o -name tags -o -name "cscope*"  \) -prune -o -type f -print | xargs grep "$SEARCH_STR" -G -n  --color=auto -i -H
 
 #find  /tmp/ \( -path "/tmp/123" -o -path "/tmp/234" -o -path "/tmp/345" \) -prune -o -type f -print
 
