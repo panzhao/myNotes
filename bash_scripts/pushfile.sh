@@ -8,4 +8,6 @@ else
     echo "$1 not exists"
 fi
 
-scp $1  developer@192.168.100.100:/data/developer
+#scp -r $1  developer@192.168.100.100:/data/developer
+
+cdb push  $1 /data/developer

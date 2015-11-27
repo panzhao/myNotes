@@ -7,3 +7,10 @@ rm tags
 rm curProFile.vim
 rm filenametags
 rm Session.vim
+rm clean.sh
+if [ -e "run.sh" ]; then
+    rm run.sh
+fi
+if [ -e "clean.sh" ]; then
+    rm clean.sh
+fi

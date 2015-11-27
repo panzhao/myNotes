@@ -1,6 +1,6 @@
 "显示行号
 set nocompatible
-"set number
+set number
 "set t_Co=256
 colorschem desert
 set backspace=indent,eol,start
@@ -76,7 +76,7 @@ cmap<leader>s  !cscope -bqk -i cscope.files <cr>
 """""""""""""""""""""""""""""""""""""""
 "LookUpFile
 """""""""""""""""""""""""""""""""""""""
-let g:LookupFile_MinPatLength = 4               "最少输入2个字符才开始查找
+let g:LookupFile_MinPatLength = 3               "最少输入2个字符才开始查找
 let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
 let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
 let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
@@ -114,7 +114,7 @@ map<F2> <C-W>w
 "打开vimgdb变量窗口
 "map<F4> :bel 20vsp gdb-varibles <CR>
 "编译当前程序
-autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
+"autocmd FileType c,cpp,h map<silent><leader><F5> :w <CR> :make <CR> :cw <CR> :cc <cr>
 "一般模式下的退出
 map<silent><leader>x :q <CR>
 map<silent><leader>w :w <CR>
@@ -129,7 +129,7 @@ nmap<silent><leader>m :A<cr>
 nmap<leader><F2> :!pushfile.sh <c-r>=expand("%:p")<CR> <cr>
 "打开tagbar
 map<F8> ::TagbarToggle <CR>
-let g:tagbar_left = 1
+let g:tagbar_left = 0
 "end set tagbar
 
 "在tlist中加入文件
@@ -152,7 +152,6 @@ map <space><F6> :grep! <c-r>=expand("<cword>")<CR>  ./*[chjq]*  -r <CR> :cw <CR>
 " netrw setting
 """"""""""""""""""""""""""""""
 "let g:netrw_winsize = 30
-nmap <silent> <leader>fe :Explore<cr>
 
 """"""""对f*的映射""""""""""
 imap jj  <Esc>
@@ -218,12 +217,15 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
 """"""""""""""""""""""""""""""
 " winManager setting
 """""""""""""""""""""""""""""""
-let g:winManagerWindowLayout = "BufExplorer,FileExplorer"
-    let g:winManagerWidth = 30
-let g:defaultExplorer = 0
-nmap <C-W><C-F> :FirstExplorerWindow<cr>
-nmap <C-W><C-B> :BottomExplorerWindow<cr>
-nmap <silent><F9> :WMToggle<cr>
+"let g:winManagerWindowLayout = "BufExplorer,FileExplorer"
+"    let g:winManagerWidth = 30
+"let g:defaultExplorer = 0
+"nmap <C-W><C-F> :FirstExplorerWindow<cr>
+"nmap <C-W><C-B> :BottomExplorerWindow<cr>
+"nmap <silent><F9> :WMToggle<cr>
+"nmap <silent><F9> :NERDTreeToggle<cr>
+"nmap <silent> <leader>fe :Explore<cr>
+nmap <silent> <leader>fe :Explore<cr>
 
 "auto display the result of search
 set is
@@ -269,7 +271,8 @@ autocmd BufNewFile,BufRead *.qml set filetype=qml
 "auto sv and ld session
 let g:AutoSessionFile="Session.vim"
 let g:OrigPWD=getcwd()
-if filereadable(g:AutoSessionFile)
+"if filereadable(g:AutoSessionFile)
+if filereadable("Session.vim")
     if argc() == 0
         au VimEnter * call EnterHandler()
         au VimLeave * call LeaveHandler()
@@ -277,6 +280,7 @@ if filereadable(g:AutoSessionFile)
 endif
 function! LeaveHandler()
     exec "mks! ".g:OrigPWD."/".g:AutoSessionFile
+    "exec "SaveSession! ".g:AutoSessionFile
 endfunction
 function! EnterHandler()
     exe "source ".g:AutoSessionFile
@@ -315,8 +319,14 @@ Plugin 'gmarik/Vundle.vim'
 "方法一: github上的用户写的插件，使用这种用户名+repo名称的方式
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
-"Bundle 'Valloric/ListToggle'
+Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+
+"vim-session依赖xolox/vim-misc'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-session'
 
 
 "方法二： vimscripts的repo使用下面的格式，直接是插件名称"
@@ -411,3 +421,6 @@ map<silent><leader>ff  :call FindFile(expand("<cword>"))<CR>
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim 
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in set filetype=cmake
 autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
+
+"merdTree 以树状显示
+let g:netrw_liststyle=3
