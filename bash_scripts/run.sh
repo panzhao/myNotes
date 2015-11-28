@@ -44,4 +44,5 @@ $sdk make -C $BUILD_DIR
     #./$BUILD_DIR/$appName
 #fi
 
-pushfile.sh $BUILD_DIR/$appName
+pushfile.sh $BUILD_DIR/test/test
+pushfile.sh $BUILD_DIR/src/*.so.*

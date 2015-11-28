@@ -47,7 +47,11 @@ if [ ! -f curProFile.vim ]; then
 else
    echo  "curProFile.vim exist, no need to create"
 fi
-cp /home/zhaopan/myNotes/bash_scripts/run.sh   ./
+if [ -e run.sh ]; then
+    echo "run.sh exists."
+else
+    cp /home/$USER/myNotes/bash_scripts/run.sh   ./
+fi
 #cp /home/zhaopan/myNotes/bash_scripts/clean.sh ./
 # 生成lookupfile索引文件
 lookupfile.sh
