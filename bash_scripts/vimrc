@@ -98,6 +98,7 @@ nmap <silent> <leader>lk :LUTags<cr>
 nmap <silent> <leader>ll :LUBufs<cr>
 nmap <silent> <leader>lw :LUWalk<cr>
 "nmap<leader>k :let g:LookupFile_TagExpr='"../filenametags"'
+nmap<leader><F4> :! lookupfile.sh <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -124,11 +125,11 @@ imap<silent><leader>w <Esc> :w <CR>
 cmap<F2> set tags=
 nmap<F3> :%s/\<<c-r>=expand("<cword>")<CR>\>//g
 "nmap<F4> :set mouse=
-nmap<silent><leader>m :A<cr>
+nmap<silent><leader>a :A<cr>
 
 nmap<leader><F2> :!pushfile.sh <c-r>=expand("%:p")<CR> <cr>
 "打开tagbar
-map<F8> ::TagbarToggle <CR>
+map<silent><F8> ::TagbarToggle <CR>
 let g:tagbar_left = 0
 "end set tagbar
 
@@ -136,7 +137,7 @@ let g:tagbar_left = 0
 map<F12> :TlistAddFiles *.[ch]*
 "关于quichfix
 map <silent><leader><space> :cw<cr>
-map <silent><leader>n :cn <CR>
+map <silent><leader>nn :cn <CR>
 map <silent><leader>p :cp <CR>
 map <silent><leader>qq :cclose<CR>
 
@@ -224,8 +225,8 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
 "nmap <C-W><C-B> :BottomExplorerWindow<cr>
 "nmap <silent><F9> :WMToggle<cr>
 "nmap <silent><F9> :NERDTreeToggle<cr>
+nmap <silent> <leader>fe :NERDTree %:p<cr>
 "nmap <silent> <leader>fe :Explore<cr>
-nmap <silent> <leader>fe :Explore<cr>
 
 "auto display the result of search
 set is
@@ -323,6 +324,7 @@ Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'suan/vim-instant-markdown'
 
 "vim-session依赖xolox/vim-misc'
 "Bundle 'xolox/vim-misc'
@@ -337,6 +339,7 @@ Plugin 'genutils'
 Plugin 'a.vim'
 Plugin 'winmanager'
 Plugin 'cmake.vim-syntax'
+Bundle 'Mark'
 "Plugin 'SuperTab'
 "Plugin 'UltiSnips'
 " Track the engine.
@@ -424,3 +427,12 @@ autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 
 "merdTree 以树状显示
 let g:netrw_liststyle=3
+
+"instant-markdown setting 设置预览
+autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} map <Leader>p :!/opt/google/chrome/chrome "%:p"<CR>
+"let g:instant_markdown_slow = 1
+"
+map <C-]>h :cexpr system('find_h.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map <C-]>c :cexpr system('find_src.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map <C-]>a :cexpr system('find_all.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map <C-]>q :cexpr system('find_qml.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
