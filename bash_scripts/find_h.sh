@@ -17,6 +17,6 @@ else
     exit 0
 fi
 
-echo "find_cpp $SEARCH_PATH $SEARCH_STR"
+echo "find_h $SEARCH_PATH $SEARCH_STR"
 
 find $SEARCH_PATH -name .git -prune -o -name "*.h" | xargs grep "$SEARCH_STR" -G -n --color=auto -i

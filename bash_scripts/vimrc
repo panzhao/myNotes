@@ -223,9 +223,11 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
 "let g:defaultExplorer = 0
 "nmap <C-W><C-F> :FirstExplorerWindow<cr>
 "nmap <C-W><C-B> :BottomExplorerWindow<cr>
-"nmap <silent><F9> :WMToggle<cr>
-"nmap <silent><F9> :NERDTreeToggle<cr>
+nmap <silent><F9> :NERDTreeToggle<cr>
 nmap <silent> <leader>fe :NERDTree %:p<cr>
+nmap <silent> <leader>fg :NERDTreeClose <cr>
+let NERDTreeIgnore=['cscope*', 'curProFile.vim', 'tags', 'filenametags']
+
 "nmap <silent> <leader>fe :Explore<cr>
 
 "auto display the result of search
@@ -432,7 +434,9 @@ let g:netrw_liststyle=3
 autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} map <Leader>p :!/opt/google/chrome/chrome "%:p"<CR>
 "let g:instant_markdown_slow = 1
 "
-map <C-]>h :cexpr system('find_h.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
-map <C-]>c :cexpr system('find_src.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
-map <C-]>a :cexpr system('find_all.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
-map <C-]>q :cexpr system('find_qml.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map<silent><leader>fh :cexpr system('find_h.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map<silent><leader>fc :cexpr system('find_src.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map<silent><leader>fa :cexpr system('find_all.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map<silent><leader>fq :cexpr system('find_qml.sh <c-r>=expand("<cword>")<CR>')<CR>  :copen<CR>
+map<leader>fl :cexpr system('find_all.sh <c-r>=expand("<cword>")<CR>')
+map<leader>fm :cexpr system('/srv/syberos/sdks/sdk/syberos-sdk-chroot sb2 -t syberos-target-armv7tnhl')

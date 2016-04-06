@@ -10,6 +10,6 @@ else
     exit 0
 fi
 
-#echo "$0 $SEARCH_PATH $SEARCH_FILE \n"
+#echo "find_file $0 $SEARCH_PATH $SEARCH_FILE \n"
 
 find $SEARCH_PATH -path '.git' -prune -o -name "${SEARCH_FILE}"

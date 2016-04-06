@@ -6,7 +6,7 @@
 #
 #
 ######################################################
-appName=Desktop-nativeApp
+#appName=Desktop-nativeApp
 srcdir=${PWD##*/}
 echo $srcdir
 BUILD_DIR=../build-$srcdir
@@ -55,5 +55,5 @@ fi
     #./$BUILD_DIR/$appName
 #fi
 
-pushfile.sh $BUILD_DIR/test/testPageManager
-find $BUILD_DIR  -name "*.so*" -exec pushfile.sh {} \;
+push2yuanxinos.sh $BUILD_DIR/test/testPageManager
+find $BUILD_DIR  -name "*.so*" -exec push2yuanxinos.sh {} \;

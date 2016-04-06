@@ -10,6 +10,6 @@ else
     exit 0
 fi
 
-echo "find_src $SEARCH_PATH $SEARCH_STR"
+echo "find_qml.sh $SEARCH_PATH $SEARCH_STR"
 
 find $SEARCH_PATH -name .git -prune -o \( -name "*.js" -o -name "*.qml" \) -print | xargs grep "$SEARCH_STR" -E -n --color=auto -i
