@@ -11,4 +11,10 @@ fi
 #scp -r $1  developer@192.168.100.100:/data/developer
 #scp -r $1  developer@192.168.100.100:/home/user/upgrade/
 
-cdb push  $1 /data/developer
+cdb push  $@ /data/developer
+
+if [ $? != 0 ];then
+    echo "failed."
+else
+    echo "sucess."
+fi

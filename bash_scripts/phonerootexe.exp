@@ -1,0 +1,148 @@
+#!/usr/bin/expect
+#-c puts "use root to execute commands on the phone by expect"
+
+# 关闭输出，由命令控制精确输出
+log_user 0
+
+# 检查参数个数并设置超时时间
+if { ${argc} < 5 } {
+    exit 100
+} elseif { ${argc} == 5 } {
+    set timeout 600
+} else {
+    set timeout "[lindex ${argv} 5]"
+}
+
+set ExitCodes 0
+set SSHNameIP "[lindex ${argv} 0]"
+set PS1Matchs "\\\[[lindex [split ${SSHNameIP} @] 0]@localhost *\\\]$ "
+set SuCommand "su - [lindex ${argv} 2] -c '[lindex ${argv} 4]'"
+set BegLength 1
+set stty_init raw
+set CmdPID [spawn -noecho ssh "${SSHNameIP}"]
+
+expect {
+    -timeout 60
+    timeout {
+        send_error -- "connection to ${SSHNameIP} timed out\n"
+        exit 101
+    }
+    eof {
+        send_error -- "connection to host failed: $expect_out(buffer)"
+        exit 102
+    }
+    "*(yes/no)\? $" {
+        send -- "yes\n"
+        exp_continue
+    }
+    "*${SSHNameIP}'s password: $" {
+        # 发送密码连接上ssh
+        send -- "[lindex ${argv} 1]\n"
+        exp_continue
+    }
+    "*${PS1Matchs}$" {
+        # 发送空命令以便能计算出提示符的长度，为后面的精确计算提供数据
+        send -- "\n"
+    }
+}
+#expect {
+#    -timeout 60
+#    timeout {
+#        send_error -- "waiting for the prompt timed out : $expect_out(buffer)"
+#        close; wait; exit 103
+#    }
+#    eof {
+#        send_error -- "connection to host failed: $expect_out(buffer)"
+#        exit 104
+#    }
+#    "*${SSHNameIP}'s password: $" {
+#        send_error -- "user name or password error: $expect_out(buffer)\n"
+#        close; wait; exit 105
+#    }
+#    "*${PS1Matchs}$" {
+#        # 发送空命令以便能计算出提示符的长度，为后面的精确计算提供数据
+#        send -- "\n"
+#    }
+#}
+expect {
+    timeout {
+        send_error -- "waiting for the prompt timed out : $expect_out(buffer)"
+        close; wait; exit 106
+    }
+    eof {
+        send_error -- "connection to host failed: $expect_out(buffer)"
+        exit 107
+    }
+    "*${PS1Matchs}$" {
+        # 计算出提示符的长度，为后面的精确计算提供数据
+        set PS1String [string range $expect_out(buffer) ${BegLength} end]
+        set PS1Length [string length "${PS1String}"]
+        # 发送执行的命令
+        send -- "${SuCommand}\n"
+    }
+}
+expect {
+    -timeout 10
+    timeout {
+        send_error -- "su timed out : $expect_out(buffer)"
+        close; wait; exit 108
+    }
+    eof {
+        send_error -- "connection to host failed: $expect_out(buffer)"
+        exit 109
+    }
+    "*Password: $" {
+        # 发送执行用户的密码
+        send -- "[lindex ${argv} 3]\n"
+    }
+    "*${PS1Matchs}$" {
+        send_error -- "user name error: [string range $expect_out(buffer) [string length "${SuCommand}"]+${BegLength} end-${PS1Length}]"
+        close; wait; exit 110
+    }
+}
+expect {
+    timeout {
+        send_error -- "command execution timed out(${timeout}) : $expect_out(buffer)"
+        close; wait; exit 111
+    }
+    eof {
+        send_error -- "connection to host failed: $expect_out(buffer)"
+        exit 112
+    }
+    full_buffer {
+        # 打印出执行命令的输出
+        send_user -- "[string range $expect_out(buffer) ${BegLength} end]"
+        set BegLength 0
+        exp_continue
+    }
+    "*${PS1Matchs}$" {
+        # 打印出执行命令的输出
+        send_user -- "[string range $expect_out(buffer) ${BegLength} end-${PS1Length}]"
+        set BegLength 2
+        # 获取执行命令的退出码
+        send -- "echo \$?\n"
+    }
+}
+expect {
+    timeout {
+        send_error -- "command execution timed out(${timeout}) : $expect_out(buffer)"
+        close; wait; exit 113
+    }
+    eof {
+        send_error -- "connection to host failed: $expect_out(buffer)\n"
+        exit 114
+    }
+    "*${PS1Matchs}$" {
+        # 获取执行命令的退出码
+        set ExitCodes "[string range $expect_out(buffer) [string length "echo \$?\n"] end-${PS1Length}]"
+        send -- "exit\n"
+    }
+}
+expect eof
+
+# 判断获得的退出码是否正确
+if {![string is integer ${ExitCodes}]} {
+    send_error -- "${ExitCodes} is not a integer number.\n"
+    exit 115
+}
+exit ${ExitCodes}

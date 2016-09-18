@@ -126,18 +126,26 @@ alias cdbpull='cdb pull'
 alias cdstr_replace='cd /home/zhaopan/work/str_replace'
 alias install='sudo apt-get install'
 alias search='aptitude search'
-alias sb2se='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper se'
-alias sb2install='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper in'
 alias sb2up='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper update'
 alias sb2ref='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper ref'
-alias sb2make='sb2 -t syberos-target-armv7tnhl make -j8'
 alias sb2rm='sb2 -t syberos-target-armv7tnhl -m sdk-install -R zypper rm'
 alias sb2qmake='sb2 -t syberos-target-armv7tnhl /usr/lib/qt5/bin/qmake'
 alias sb2rpmbuild='sb2 -t syberos-target-armv7tnhl rpmbuild -ba'
-alias syberossb2='sb2 -t syberos-target-armv7tnhl'
+alias syberossb2='/srv/syberos/sdks/sdk/syberos-sdk-chroot sb2 -t syberos-target-armv7tnhl'
 alias cdtest='cd $HOME_DIR/test'
 alias cdrpm='cd $HOME_DIR/rpmbuild/RPMS/armv7tnhl'
 alias cdextractor='cd $HOME_DIR/work/extractor'
+alias cdwatcher='cd /home/zhaopan/work/watcher/watcher/src'
+alias vr='vim -R '
+alias cdtracker='cd /home/zhaopan/work/tracker-0.17.1.skytree30-1.syberos.10.1.src/tracker-0.17.1.skytree30/tracker'
+alias sybersdk='/home/zhaopan/SyberOS-SDK/pdk-jail/sdks/sdk/syberos-sdk-chroot sb2 -t sybersdk-target-armv7tnhl'
+alias cdbaihehua='cd ~/work/baihehua'
+alias cdsysupdate='cd /home/zhaopan/android/androiddos/android600/packages/apps/SystemUpdate'
+
+M_CHROOT="/home/$USER/Syberos-Pdk/sdk/sdk-root/syberos-sdk-chroot"
+alias sb2main="$M_CHROOT sb2 -t target-armv7tnhl-main_dev -m sdk-install -R"
+alias sb2lily="$M_CHROOT sb2 -t target-armv7tnhl-product_lily -m sdk-install -R"
+alias sb2xuanwu="$M_CHROOT sb2 -t target-armv7tnhl-xuanwu -m sdk-install -R"
 
 # Alias definitions
 # You may want to put all your additions into a separate file like
@@ -156,7 +164,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 #android
-JAVA_HOME=$HOME_DIR/android/jdk1.6.0_45
+JAVA_HOME=$HOME_DIR/android/sdk-tool/jdk1.7.0_79
 export CLASSPATH=$JAVA_HOME/lib:$CLASSPATH
 export PATH=$JAVA_HOME/bin:$PATH
 export USE_CCACHE=1
@@ -164,7 +172,7 @@ export CCACHE_DIR=/home/zhaopan/ccache
 #android
 
 
-export PATH=$HOME_DIR/android/android-sdk-linux/tools:/home/zhaopan/android/android-sdk-linux/platform-tools:$PATH
+export PATH=$HOME_DIR/android/sdk-tool/android-sdk-linux/tools:/home/zhaopan/android/sdk-tool/android-sdk-linux/platform-tools:$PATH
 export PATH=$HOME_DIR/myNotes/bash_scripts:$PATH
 export PATH=/usr/local/Qt-5.3.1/bin:$PATH
 export PATH=$HOME_DIR/chrome-project/depot_tools:$PATH
@@ -172,3 +180,4 @@ export PATH=~/bin:$PATH
 export PATH=/home/zhaopan/.vim/bundle/YCM-Generator:$PATH
 #set -o vi
 alias sdk=/srv/syberos/sdks/sdk/syberos-sdk-chroot
+alias pdk=/home/zhaopan/Syberos-Pdk/sdk/sdk-root/syberos-sdk-chroot
