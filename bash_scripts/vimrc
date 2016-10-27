@@ -320,7 +320,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " The following are examples of different formats supported.
 "方法一: github上的用户写的插件，使用这种用户名+repo名称的方式
-Bundle 'Valloric/YouCompleteMe'
+"
+Bundle 'panzhao/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
 Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
@@ -345,9 +346,9 @@ Bundle 'Mark'
 "Plugin 'SuperTab'
 "Plugin 'UltiSnips'
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plugin 'panzhao/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plugin 'panzhao/vim-snippets'
 "..................................
 "方法三：非github的插件，可以直接使用其git地址 
 " Bundle 'git://git.wincent.com/command-t.git'
